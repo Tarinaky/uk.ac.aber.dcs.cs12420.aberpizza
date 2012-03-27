@@ -2,6 +2,13 @@ package uk.ac.aber.dcs.cs12420.aberpizza.data;
 
 import java.math.BigDecimal;
 
+/**
+ * An interface that should be implemented by all items
+ * available for sale.
+ * 
+ * @author Neil Taylor
+ *
+ */
 public interface Item {
 	
 	public BigDecimal getPrice();
