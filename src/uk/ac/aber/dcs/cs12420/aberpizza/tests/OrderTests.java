@@ -28,8 +28,7 @@ public class OrderTests extends TestCase {
 		TestItem item = new TestItem();
 		
 		fixture.addItem(item, 1);
-		fixture.updateItemQuantity(item, 3);
-		fixture.updateItemQuantity(item, 0);
+		fixture.updateItemQuantity(item, -1);
 		
 		assertTrue("Expected subtotal to be 0; received "+fixture.getSubtotal(),
 				fixture.getSubtotal().compareTo(new BigDecimal(""+0) )== 0 );
