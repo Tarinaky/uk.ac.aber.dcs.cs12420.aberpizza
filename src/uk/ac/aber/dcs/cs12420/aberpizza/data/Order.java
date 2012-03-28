@@ -21,9 +21,13 @@ public class Order {
 	
 	public Order() {}
 	
-	public void setCustomerName(String name) {}
+	public void setCustomerName(String name) {
+		this.customerName = name;
+	}
+	
 	public String getCustomerName() {
-		return customerName;}
+		return customerName;
+	}
 	
 	public void addItem(Item item, int quantity) {}
 	public void updateItemQuantity(Item item, int quantity) {}
