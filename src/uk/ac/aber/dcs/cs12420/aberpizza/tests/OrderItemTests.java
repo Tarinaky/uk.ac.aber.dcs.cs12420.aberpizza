@@ -5,43 +5,8 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
-import uk.ac.aber.dcs.cs12420.aberpizza.data.Item;
 import uk.ac.aber.dcs.cs12420.aberpizza.data.OrderItem;
 import junit.framework.TestCase;
-
-/**
- * Test item describing a simple implementation of an Item.
- * 
- * @author Jacob Smith
- *
- */
-class TestItem implements Item {
-	
-	private BigDecimal price = new BigDecimal(""+10.99);
-	private String description = "Test item, default description.";
-	
-	@Override
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	@Override
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-		
-	}
-
-	@Override
-	public String getDescription() {
-		return description;
-	}
-
-	@Override
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-}
 
 public class OrderItemTests extends TestCase {
 	private OrderItem fixture = null;
