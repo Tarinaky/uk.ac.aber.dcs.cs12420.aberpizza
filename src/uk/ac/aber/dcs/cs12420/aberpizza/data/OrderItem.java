@@ -16,7 +16,9 @@ import java.math.BigDecimal;
 public class OrderItem {
 	private int quantity;
 	
-	public OrderItem(Item item, int quantity) {}
+	public OrderItem(Item item, int quantity) {
+		this.quantity = quantity;
+	}
 	
 	public int getQuantity() {
 		return quantity;}
