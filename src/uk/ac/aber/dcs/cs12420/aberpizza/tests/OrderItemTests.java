@@ -53,13 +53,13 @@ public class OrderItemTests extends TestCase {
 	
 	@Test
 	public void testQuantity() {
-		assertTrue("Initial quantity is expected to be 3.",
+		assertTrue("Initial quantity is expected to be 3; received"+fixture.getQuantity(),
 				fixture.getQuantity() == 3);
 	}
 	
 	@Test
 	public void testTotal() {
-		assertTrue("Expected total for 3 items at 10.99 is 32.97", 
-				fixture.getOrderItemTotal() == new BigDecimal(""+32.97) );
+		assertTrue("Expected total for 3 items at 10.99 is 32.97; received "+fixture.getOrderItemTotal().toString(), 
+				fixture.getOrderItemTotal().compareTo(new BigDecimal(""+32.97) ) == 0 );
 	}
 }

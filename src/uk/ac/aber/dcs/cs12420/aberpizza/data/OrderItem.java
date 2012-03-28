@@ -15,14 +15,19 @@ import java.math.BigDecimal;
  */
 public class OrderItem {
 	private int quantity;
+	private Item item; // Deviation from design by addition of items field!
 	
 	public OrderItem(Item item, int quantity) {
 		this.quantity = quantity;
+		this.item = item; 
 	}
 	
 	public int getQuantity() {
-		return quantity;}
+		return quantity;
+	}
+	
 	public BigDecimal getOrderItemTotal() {
-		return null;}
+		return item.getPrice().multiply(new BigDecimal(quantity) );
+	}
 	
 }
