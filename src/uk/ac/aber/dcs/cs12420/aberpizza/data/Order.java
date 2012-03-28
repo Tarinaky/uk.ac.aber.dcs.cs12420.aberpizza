@@ -46,14 +46,65 @@ public class Order {
 		return customerName;
 	}
 	
-	public void addItem(Item item, int quantity) {}
-	public void updateItemQuantity(Item item, int quantity) {}
+	/**
+	 * Adds an item to the table or sets an existing item's quantity.
+	 * <p>
+	 * Removing an item can be achieved by 'adding' (or setting) it with
+	 * quantity '0'.
+	 * 
+	 * @param item The item to be set in the table.
+	 * @param quantity The number of copies of the item required in the order.
+	 * @see updateItemQuantity
+	 * @see orderTable
+	 * 
+	 */
+	public void addItem(Item item, int quantity) {
+		if (quantity > 0) {
+			orderTable.put(item, new OrderItem(item, quantity) );
+		} else {
+			orderTable.remove(item);
+		}
+	}
 	
+	/**
+	 * Change an item's quantity. This increments or decrements the quantity.
+	 * <p>
+	 * Removing an item can be achieved by reducing its quantity to 0.
+	 * 
+	 * @param item The item to be modified in the table.
+	 * @param quantity The number of copies to add (if positive) or remove (if negative)
+	 * @see addItem
+	 * @see orderTable
+	 */
+	public void updateItemQuantity(Item item, int quantity) {
+		quantity += orderTable.get(item).getQuantity();
+
+		addItem(item,quantity);
+	}
+	
+	/**
+	 * Return the subtotal (before discounts) of this order.
+	 * <p>
+	 * This is calculated by iterating through each row of orderTable and
+	 * obtaining the price associated with that row.
+	 * 
+	 * @return The price, before discounts, of this order.
+	 * @see orderTable
+	 * @see OrderItem.getOrderItemTotal
+	 */
 	public BigDecimal getSubtotal() {
-		return null;}
+		BigDecimal subtotal = new BigDecimal(""+0);
+		for (OrderItem item : orderTable.values() ) {
+			subtotal = subtotal.add(item.getOrderItemTotal() );
+		}
+		return subtotal;
+	}
+	
+	//TODO: Implement
 	public BigDecimal getDiscount() {
 		return null;}
 	
+	//TODO: Implement
 	public String getReceipt() {
 		return null;}
 }
