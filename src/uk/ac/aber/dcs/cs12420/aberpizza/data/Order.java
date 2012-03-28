@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.cs12420.aberpizza.data;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -27,14 +28,14 @@ public class Order {
 	private String customerName = null;
 	
 	/**
-	 * A self-balancing tree containing each row of the order
+	 * A map containing each row of the order
 	 * ordered according to the item. This can be thought of as
 	 * a table where each item may appear once (or not at all).
 	 */
 	private Map<Item,OrderItem> orderTable = null;
 	
 	public Order() {
-		orderTable = new TreeMap<Item,OrderItem>();
+		orderTable = new HashMap<Item,OrderItem>();
 		date = new Date();
 	}
 	
