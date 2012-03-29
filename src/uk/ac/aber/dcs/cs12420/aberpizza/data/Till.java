@@ -12,7 +12,6 @@ import java.util.ListIterator;
  * to save the till and load the till. XML Serialisation must be
  * used for the save/load process.
  * 
- * @author Neil Taylor
  * @author Jacob Smith
  *
  */

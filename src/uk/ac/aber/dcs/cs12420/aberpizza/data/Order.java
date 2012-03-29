@@ -14,7 +14,6 @@ import java.util.TreeMap;
  * The order should also return a receipt. This is specified to
  * return a string, plain text or html.
  * 
- * @author Neil Taylor
  * @author Jacob Smith
  */
 public class Order {

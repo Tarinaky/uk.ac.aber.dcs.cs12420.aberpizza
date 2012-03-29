@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  * An interface that should be implemented by all items
  * available for sale.
  * 
- * @author Neil Taylor
+ * @author Jacob Smith
  *
  */
 public interface Item {
