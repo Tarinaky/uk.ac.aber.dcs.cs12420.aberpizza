@@ -62,6 +62,8 @@ public class Till {
 			Order order = iterator.previous();
 			if (order.getDate().after(today) ) {
 				total = total.add(order.getSubtotal() );
+			} else {
+				break;
 			}
 		}
 		
