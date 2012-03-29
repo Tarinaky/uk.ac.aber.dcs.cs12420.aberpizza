@@ -108,4 +108,8 @@ public class Order {
 	//TODO: Implement
 	public String getReceipt() {
 		return null;}
+
+	public Date getDate() {
+		return date;
+	}
 }
