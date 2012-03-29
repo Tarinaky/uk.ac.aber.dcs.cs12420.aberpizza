@@ -28,10 +28,28 @@ public class Till {
 		orders = new LinkedList<Order>();
 	}
 	
+	/**
+	 * 'Places' an order by entering it into the system. An order cannot be modified
+	 * after this point, a new order must be placed instead.
+	 * 
+	 * @param order The order to be registered.
+	 */
 	public void addOrder(Order order) {
 		orders.add(order);
 	}
 	
+	/**
+	 * Totals all orders for a given day.
+	 * <p>
+	 * Because of limitations in the Date object unusual behavior may occur
+	 * about the hour of midnight, and whichever day it is associated with
+	 * depends on DST. There is no easy solution to this problem.
+	 * <p>
+	 * I am also unsure what occurs if an order is placed at -exactly- 00:00:00.000
+	 * (to the millisecond).
+	 * 
+	 * @return The total value of all orders taken since 00:00:00.000 (midnight) UTC.
+	 */
 	public BigDecimal getTotalForDay() {
 		ListIterator<Order> iterator = orders.listIterator(orders.size() );
 		
