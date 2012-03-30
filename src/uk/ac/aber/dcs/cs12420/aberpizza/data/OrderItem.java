@@ -10,7 +10,6 @@ import java.math.BigDecimal;
  * For example, an OrderItem might represent a pizza,
  * with quantity 2.
  * 
- * @author Neil Taylor
  * @author Jacob Smith
  *
  */
