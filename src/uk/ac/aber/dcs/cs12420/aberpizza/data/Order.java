@@ -108,6 +108,11 @@ public class Order {
 	public String getReceipt() {
 		return null;}
 
+	/**
+	 * Produces the date that this order was originally constructed.
+	 * 
+	 * @return A Date object referring to the time, in milliseconds, that this object was instantiated.
+	 */
 	public Date getDate() {
 		return date;
 	}
