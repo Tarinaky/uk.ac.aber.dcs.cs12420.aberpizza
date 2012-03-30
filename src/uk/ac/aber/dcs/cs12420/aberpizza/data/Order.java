@@ -73,8 +73,8 @@ public class Order {
 	 * 
 	 * @param item The item to be modified in the table.
 	 * @param quantity The number of copies to add (if positive) or remove (if negative)
-	 * @see addItem
-	 * @see orderTable
+	 * @see #addItem
+	 * @see #orderTable
 	 */
 	public void updateItemQuantity(Item item, int quantity) {
 		quantity += orderTable.get(item).getQuantity();
@@ -89,8 +89,8 @@ public class Order {
 	 * obtaining the price associated with that row.
 	 * 
 	 * @return The price, before discounts, of this order.
-	 * @see orderTable
-	 * @see OrderItem.getOrderItemTotal
+	 * @see #orderTable
+	 * @see #OrderItem.getOrderItemTotal
 	 */
 	public BigDecimal getSubtotal() {
 		BigDecimal subtotal = new BigDecimal(""+0);
