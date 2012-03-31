@@ -34,7 +34,11 @@ public class OrderPlacer {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Container layout = frame.getContentPane();
-		layout.setLayout(new GridBagLayout() );
+		GridBagLayout gbl = new GridBagLayout();
+		layout.setLayout(gbl);
+		gbl.layoutContainer(layout);
+		
+		
 		GridBagConstraints c = new GridBagConstraints();
 		
 		
@@ -42,6 +46,8 @@ public class OrderPlacer {
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 0;
+		c.weightx = 1;
+		c.weighty = 0;
 		layout.add(toolbar, c);
 		
 		JButton button = null;
@@ -55,6 +61,7 @@ public class OrderPlacer {
 		OrderBuilder orderPanel = new OrderBuilder();
 		c.fill = GridBagConstraints.BOTH;
 		c.gridy = 1;
+		c.weighty = 1;
 		layout.add(orderPanel.getComponent(), c);
 		
 		frame.pack();
