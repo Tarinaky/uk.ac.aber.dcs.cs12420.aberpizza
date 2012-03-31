@@ -1,7 +1,13 @@
 package uk.ac.aber.dcs.cs12420.aberpizza.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,12 +39,16 @@ public class OrderPlacer {
 		JFrame frame = new JFrame("Order Placer");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel layout = new JPanel();
-		frame.getContentPane().add(layout);
+		Container layout = frame.getContentPane();
+		layout.setLayout(new GridBagLayout() );
+		GridBagConstraints c = new GridBagConstraints();
 		
 		
 		JToolBar toolbar = new JToolBar("toolbar");
-		layout.add(toolbar);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		layout.add(toolbar, c);
 		
 		JButton button = null;
 		
@@ -48,11 +58,12 @@ public class OrderPlacer {
 		button = new JButton("Send order");
 		toolbar.add(button);
 		
-		JPanel orderPanel = new JPanel();
-		orderPanel.setSize(640, 480);
-		layout.add(orderPanel);
+		OrderBuilder orderPanel = new OrderBuilder();
+		c.fill = GridBagConstraints.BOTH;
+		c.gridy = 1;
+		layout.add(orderPanel.getComponent(), c);
 		
-		frame.pack();
+		//frame.pack();
 		frame.setVisible(true);
 	}
 	

@@ -1,17 +1,25 @@
 package uk.ac.aber.dcs.cs12420.aberpizza.gui;
 
-import javax.swing.JPanel;
+import java.awt.Component;
+import java.awt.Dimension;
+
+import javax.swing.JSplitPane;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Order;
 
 public class OrderBuilder {
 	private Order order = null;
-	private JPanel panel = null;
+	private Component panel = null;
 	
-	public OrderBuilder (Order order) {
-		this.order = order;
-		panel = new JPanel();
+	public OrderBuilder () {
+		this.order = new Order();
+		panel = new JSplitPane();
+		panel.setMinimumSize(new Dimension(100,50));
 		
 		
+	}
+	
+	public Component getComponent() {
+		return panel;
 	}
 }
