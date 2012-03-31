@@ -63,7 +63,7 @@ public class OrderPlacer {
 		c.gridy = 1;
 		layout.add(orderPanel.getComponent(), c);
 		
-		//frame.pack();
+		frame.pack();
 		frame.setVisible(true);
 	}
 	
