@@ -1,17 +1,11 @@
 package uk.ac.aber.dcs.cs12420.aberpizza.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import javax.swing.AbstractButton;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Till;
