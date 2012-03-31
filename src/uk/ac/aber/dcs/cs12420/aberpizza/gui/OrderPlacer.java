@@ -43,6 +43,7 @@ public class OrderPlacer {
 		
 		
 		JToolBar toolbar = new JToolBar("toolbar");
+		toolbar.setFloatable(false);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 0;
