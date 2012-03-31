@@ -12,7 +12,8 @@ public class OrderBuilder {
 	private Component panel = null;
 	
 	public OrderBuilder () {
-		this.order = new Order();
+		newOrder();
+		
 		panel = new JSplitPane();
 		panel.setMinimumSize(new Dimension(100,50));
 		
@@ -21,5 +22,13 @@ public class OrderBuilder {
 	
 	public Component getComponent() {
 		return panel;
+	}
+	
+	public void newOrder () {
+		order = new Order();
+	}
+	
+	public Order getOrder() {
+		return order;
 	}
 }
