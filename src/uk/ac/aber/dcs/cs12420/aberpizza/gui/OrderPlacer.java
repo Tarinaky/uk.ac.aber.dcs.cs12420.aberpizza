@@ -21,6 +21,7 @@ public class OrderPlacer {
 	 * Handle to the model that this view inserts orders into.
 	 */
 	private Till till = null;
+	private OrderBuilder orderPanel = null;
 	
 	/**
 	 * Create, arrange and set visible the elements of the JFrame.
@@ -54,12 +55,14 @@ public class OrderPlacer {
 		JButton button = null;
 		
 		button = new JButton("New order");
+		button.addActionListener(new NewOrderListener(this));
 		toolbar.add(button);
 		
 		button = new JButton("Send order");
+		button.addActionListener(new SendOrderListener(this));
 		toolbar.add(button);
 		
-		OrderBuilder orderPanel = new OrderBuilder();
+		orderPanel = new OrderBuilder();
 		c.fill = GridBagConstraints.BOTH;
 		c.gridy = 1;
 		c.weighty = 1;
