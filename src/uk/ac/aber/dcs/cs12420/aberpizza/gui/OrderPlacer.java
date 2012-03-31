@@ -73,6 +73,7 @@ public class OrderPlacer {
 	}
 	
 	public OrderBuilder order() { return orderPanel; }
+	public Till getTill() { return till; }
 	
 	public static void main (String[] args) { OrderPlacer foo = new OrderPlacer(new Till()); }
 	

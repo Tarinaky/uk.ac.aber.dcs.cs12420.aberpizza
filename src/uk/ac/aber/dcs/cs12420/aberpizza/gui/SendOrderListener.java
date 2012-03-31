@@ -5,13 +5,15 @@ import java.awt.event.ActionListener;
 
 public class SendOrderListener implements ActionListener {
 
+	private OrderPlacer view = null;
+	
 	public SendOrderListener(OrderPlacer orderPlacer) {
-		// TODO Auto-generated constructor stub
+		view = orderPlacer;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		view.getTill().addOrder(view.order().getOrder());
 
 	}
 
