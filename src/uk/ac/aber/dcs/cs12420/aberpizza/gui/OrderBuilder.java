@@ -17,8 +17,7 @@ public class OrderBuilder {
 		newOrder();
 		
 		panel = new JSplitPane();
-		panel.setMinimumSize(new Dimension(100,50));
-		
+				
 		JPanel right = new JPanel(new GridBagLayout() );
 		panel.setRightComponent(right);
 		
