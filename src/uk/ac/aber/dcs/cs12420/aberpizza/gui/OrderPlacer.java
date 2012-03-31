@@ -72,6 +72,8 @@ public class OrderPlacer {
 		frame.setVisible(true);
 	}
 	
+	public OrderBuilder order() { return orderPanel; }
+	
 	public static void main (String[] args) { OrderPlacer foo = new OrderPlacer(new Till()); }
 	
 

@@ -4,14 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NewOrderListener implements ActionListener {
+	private OrderPlacer view = null;
 
 	public NewOrderListener(OrderPlacer orderPlacer) {
-		// TODO Auto-generated constructor stub
+		view = orderPlacer;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		view.order().newOrder();
 
 	}
 
