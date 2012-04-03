@@ -54,8 +54,8 @@ public class Order {
 	 * 
 	 * @param item The item to be set in the table.
 	 * @param quantity The number of copies of the item required in the order.
-	 * @see updateItemQuantity
-	 * @see orderTable
+	 * @see #updateItemQuantity
+	 * @see #orderTable
 	 * 
 	 */
 	public void addItem(Item item, int quantity) {
@@ -90,7 +90,7 @@ public class Order {
 	 * 
 	 * @return The price, before discounts, of this order.
 	 * @see #orderTable
-	 * @see #OrderItem.getOrderItemTotal
+	 * @see OrderItem#getOrderItemTotal
 	 */
 	public BigDecimal getSubtotal() {
 		BigDecimal subtotal = new BigDecimal(""+0);
