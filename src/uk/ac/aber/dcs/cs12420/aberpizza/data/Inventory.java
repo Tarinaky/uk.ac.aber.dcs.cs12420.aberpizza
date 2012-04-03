@@ -1,14 +1,13 @@
 package uk.ac.aber.dcs.cs12420.aberpizza.data;
 
-import java.beans.XMLEncoder;
+import java.beans.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 /**
  * Class for storing Item objects representing goods for sale.
  * 
- * @author Tarinaky
+ * @author Jacob Smith
  *
  */
 public class Inventory {
@@ -57,6 +56,23 @@ public class Inventory {
 		encoder.writeObject(this);
 		encoder.close();
 		
+	}
+	
+	public static Inventory load(String filename)
+	throws IOException {
+		if (filename == null) {
+			filename = "inventory.xml";
+		}
+		
+		File path = new File ("data", filename);
+		
+		XMLDecoder decoder = new XMLDecoder(
+				new BufferedInputStream(
+						new FileInputStream(path)));
+		Inventory inventory = (Inventory)decoder.readObject();
+		decoder.close();
+		
+		return inventory;
 	}
 
 }
