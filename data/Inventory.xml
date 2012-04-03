@@ -21,6 +21,11 @@
   			<object class="java.math.BigDecimal">
   				<string>8</string></object></void>
   		<void method="setSize">
-  			<double>7</double></void></object></void>
+  			<double>7</double></void>
+  		<void method="setToppings">
+  			<object class="java.util.LinkedList&lt;String&gt;">
+  				<void method="add">
+  					<string>Pepperoni</string>
+  				</void></object></void></object></void>
  </object> 
 </java> 
