@@ -6,7 +6,8 @@ public abstract class AbstractItem implements Item {
 
 	private BigDecimal price = new BigDecimal(""+10.99);
 	private String description = "Default item, default description.";
-	
+	private double size = 1;
+		
 	@Override
 	public BigDecimal getPrice() {
 		return price;
@@ -27,5 +28,8 @@ public abstract class AbstractItem implements Item {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public double getSize() { return size; }
+	public void setSize(double size) { this.size = size; } 
 
 }
