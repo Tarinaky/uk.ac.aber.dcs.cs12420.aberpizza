@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_29" class="java.beans.XMLDecoder"> 
+ <object class="java.util.ArrayList"> 
+  <void method="add"> 
+   <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.DrinkItem">
+   	<void method="setDescription">
+   		<string>ACME Cola</string></void>
+   	<void method="setSize">
+   		<double>0.5</double>
+   	</void>
+   	<void method="setPrice">
+   		<object class="java.math.BigDecimal">
+   			<string>0.70</string></object></void>
+   </object> 
+  </void> 
+ </object> 
+</java> 
