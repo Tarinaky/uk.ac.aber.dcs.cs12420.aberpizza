@@ -53,7 +53,7 @@ public class Inventory {
 		XMLEncoder encoder = new XMLEncoder(
 				new BufferedOutputStream(
 						new FileOutputStream(path)));
-		encoder.writeObject(this);
+		encoder.writeObject(items);
 		encoder.close();
 		
 	}
@@ -69,10 +69,13 @@ public class Inventory {
 		XMLDecoder decoder = new XMLDecoder(
 				new BufferedInputStream(
 						new FileInputStream(path)));
-		Inventory inventory = (Inventory)decoder.readObject();
+		//Inventory inventory = (Inventory)decoder.readObject();
+		Inventory inventory = new Inventory();
+		inventory.view().addAll((Collection<? extends Item>) decoder.readObject() );
 		decoder.close();
 		
 		return inventory;
+		
 	}
 	
 }

@@ -28,17 +28,19 @@ public class InventoryTest extends TestCase {
 	
 	@Test
 	public void testSerialisation() {
+		Inventory loaded = null;
 		try {
 			
 			fixture.save("testInventory.xml");
-			fixture = Inventory.load("testInventory.xml");
+			loaded = Inventory.load("testInventory.xml");
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("IOException.");
 		}
 		
-		assertTrue("Expected item to be in fixture.",
-				fixture.view().contains(testItem) );
+		assertEquals("Inventories expected to be the same.",
+				((Item) fixture.view().toArray()[0]).getDescription(), 
+				((Item) loaded.view().toArray()[0]).getDescription() );
 		
 	}
 
