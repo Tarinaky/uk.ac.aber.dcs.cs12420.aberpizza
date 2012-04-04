@@ -1,6 +1,7 @@
 package uk.ac.aber.dcs.cs12420.aberpizza.pipeline;
 
 import java.io.*;
+import java.math.BigDecimal;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
@@ -12,6 +13,7 @@ public class InventoryEditor {
 	private static State state = State.START;
 	private static Inventory inventory = null;
 	private static BufferedReader input = null;
+	private static Item item = null;
 	
 	/**
 	 * @param args
@@ -133,7 +135,40 @@ public class InventoryEditor {
 				inventory.getItems().remove(i);
 				state = State.EDITOR;
 				continue;
-							
+			case ADD_PIZZA:
+			case ADD_DRINK:
+			case ADD_SIDE:
+				item = new PizzaItem();
+				System.out.println("Enter description or 'D' to cancel.");
+				s = input.readLine();
+				if (s.compareTo("D") == 0) {
+					state = State.EDITOR;
+					continue;
+				}
+				item.setDescription(s);
+				
+				System.out.println("Enter size, in inches of radius");
+				s = input.readLine();
+				if (s.compareTo("D") == 0) {
+					state = State.EDITOR;
+					continue;
+				}
+				((AbstractItem) item).setSize(Double.parseDouble(s));
+				
+				System.out.println("Enter price, as a decimal number of pounds.");
+				s = input.readLine();
+				if (s.compareTo("D") == 0) {
+					state = State.EDITOR;
+					continue;
+				}
+				item.setPrice(new BigDecimal(s) );
+				
+				inventory.getItems().add(item);
+				System.out.println("Item added.");
+				state = State.EDITOR;
+				continue;
+				
+				
 			default:
 				return;
 			
