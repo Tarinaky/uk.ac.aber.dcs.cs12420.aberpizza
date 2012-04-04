@@ -3,6 +3,8 @@ package uk.ac.aber.dcs.cs12420.aberpizza.gui;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 import javax.swing.JButton;
@@ -37,14 +39,17 @@ public class OrderBuilder {
 		c.gridx = 0;
 		c.gridy = 0;
 		JButton button = new JButton("Pizza");
+		button.addActionListener(new ShowPizzasListener(this));
 		right.add(button, c);
 		
 		c.gridx = 1;
 		button = new JButton ("Drinks");
+		button.addActionListener(new ShowDrinksListener(this));
 		right.add(button,c);
 		
 		c.gridx = 2;
 		button = new JButton("Sides");
+		button.addActionListener(new ShowSidesListener(this));
 		right.add(button,c);
 	}
 	
@@ -149,4 +154,49 @@ public class OrderBuilder {
 	public Order getOrder() {
 		return order;
 	}
+}
+
+class ShowPizzasListener implements ActionListener {
+
+	private OrderBuilder a = null;
+	
+	public ShowPizzasListener(OrderBuilder a) {
+		this.a = a;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		a.showPizza();
+	}
+
+}
+
+class ShowDrinksListener implements ActionListener {
+
+	private OrderBuilder a = null;
+	
+	public ShowDrinksListener(OrderBuilder a) {
+		this.a = a;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		a.showDrinks();
+	}
+
+}
+
+class ShowSidesListener implements ActionListener {
+
+	private OrderBuilder a = null;
+	
+	public ShowSidesListener(OrderBuilder a) {
+		this.a = a;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		a.showSides();
+	}
+
 }
