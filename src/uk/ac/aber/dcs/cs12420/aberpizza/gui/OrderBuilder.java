@@ -8,13 +8,16 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
+import uk.ac.aber.dcs.cs12420.aberpizza.data.Inventory;
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Order;
 
 public class OrderBuilder {
 	private Order order = null;
+	private Inventory inventory = null;
 	private JSplitPane panel = null;
 	
-	public OrderBuilder () {
+	public OrderBuilder (Inventory inventory) {
+		this.inventory = inventory;
 		newOrder();
 		
 		panel = new JSplitPane();

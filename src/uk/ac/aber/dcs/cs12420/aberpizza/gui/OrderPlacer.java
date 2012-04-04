@@ -3,11 +3,13 @@ package uk.ac.aber.dcs.cs12420.aberpizza.gui;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
 
+import uk.ac.aber.dcs.cs12420.aberpizza.data.Inventory;
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Till;
 
 /**
@@ -21,6 +23,7 @@ public class OrderPlacer {
 	 * Handle to the model that this view inserts orders into.
 	 */
 	private Till till = null;
+	private Inventory inventory = null;
 	private OrderBuilder orderPanel = null;
 	
 	/**
@@ -30,6 +33,14 @@ public class OrderPlacer {
 	 */
 	public OrderPlacer(Till till) {
 		this.till = till;
+		try {
+			inventory = Inventory.load(null);
+		} catch (IOException e) {
+			e.printStackTrace();
+			
+			// TODO: Display error message that inventory could not be opened.
+			inventory = new Inventory();
+		}
 		
 		JFrame frame = new JFrame("Order Placer");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +73,7 @@ public class OrderPlacer {
 		button.addActionListener(new SendOrderListener(this));
 		toolbar.add(button);
 		
-		orderPanel = new OrderBuilder();
+		orderPanel = new OrderBuilder(inventory);
 		c.fill = GridBagConstraints.BOTH;
 		c.gridy = 1;
 		c.weighty = 1;
