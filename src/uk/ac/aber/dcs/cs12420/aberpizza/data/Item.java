@@ -16,4 +16,7 @@ public interface Item {
 	
 	public String getDescription();
 	public void setDescription(String description);
+	
+	public double getSize();
+	public void setSize(double d);
 }

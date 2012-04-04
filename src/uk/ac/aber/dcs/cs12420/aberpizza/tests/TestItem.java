@@ -35,5 +35,17 @@ public class TestItem implements Item {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	@Override
+	public double getSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setSize(double d) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

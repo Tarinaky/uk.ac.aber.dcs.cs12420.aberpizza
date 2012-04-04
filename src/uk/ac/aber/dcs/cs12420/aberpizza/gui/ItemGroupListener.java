@@ -18,8 +18,8 @@ public class ItemGroupListener implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		//TODO: Stub
-		System.out.println(group);
+		ItemGroupPicker dialogue = new ItemGroupPicker(order, group);
+		dialogue.show();
 
 	}
 
