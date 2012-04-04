@@ -17,6 +17,7 @@ public class ItemGroupPicker extends JDialog {
 
 	public ItemGroupPicker(Order order, ItemGroupButton group) {
 		this.order = order;
+		setModal(true);
 				
 		GridBagLayout layout = new GridBagLayout();
 		setLayout(layout);
