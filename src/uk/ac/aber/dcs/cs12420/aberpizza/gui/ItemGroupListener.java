@@ -18,6 +18,11 @@ public class ItemGroupListener implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		if (group.getList().size() < 2) {
+			order.updateItemQuantity(group.getList().getFirst(), 1);
+			return;
+		}
+		
 		ItemGroupPicker dialogue = new ItemGroupPicker(order, group);
 		dialogue.show();
 
