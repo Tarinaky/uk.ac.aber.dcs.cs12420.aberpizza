@@ -77,7 +77,11 @@ public class Order {
 	 * @see #orderTable
 	 */
 	public void updateItemQuantity(Item item, int quantity) {
-		quantity += orderTable.get(item).getQuantity();
+		if ( orderTable.containsKey(item) ) {
+			quantity += orderTable.get(item).getQuantity();
+		} else {
+			quantity = 1;
+		}
 
 		addItem(item,quantity);
 	}

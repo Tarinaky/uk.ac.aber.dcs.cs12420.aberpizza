@@ -23,6 +23,7 @@ public class ItemGroupPicker extends JDialog {
 		for (Item item : group.getList() ) {
 			Double size = new Double(item.getSize() );
 			JButton button = new JButton(size.toString() );
+			button.addActionListener(new ItemGroupPickerListener(order,this,item));
 			add(button);
 
 				
