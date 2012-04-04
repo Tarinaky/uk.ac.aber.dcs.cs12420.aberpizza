@@ -12,6 +12,99 @@
      </void> 
     </object> 
    </void> 
+   <void method="add"> 
+    <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.DrinkItem"> 
+     <void property="description"> 
+      <string>ACME Cola</string> 
+     </void> 
+     <void property="size"> 
+      <double>1.25</double> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.PizzaItem"> 
+     <void property="description"> 
+      <string>Pepperoni</string> 
+     </void> 
+     <void property="size"> 
+      <double>7.0</double> 
+     </void> 
+     <void property="toppings"> 
+      <void method="add"> 
+       <string>Pepperoni</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.PizzaItem"> 
+     <void property="description"> 
+      <string>Pepperoni</string> 
+     </void> 
+     <void property="size"> 
+      <double>10.0</double> 
+     </void> 
+     <void property="toppings"> 
+      <void method="add"> 
+       <string>Pepperoni</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.PizzaItem"> 
+     <void property="description"> 
+      <string>Meat Feast</string> 
+     </void> 
+     <void property="size"> 
+      <double>7.0</double> 
+     </void> 
+     <void property="toppings"> 
+      <void method="add"> 
+       <string>Ham</string> 
+      </void> 
+      <void method="add"> 
+       <string>Pepperoni</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.PizzaItem"> 
+     <void property="description"> 
+      <string>Meat Feast</string> 
+     </void> 
+     <void property="size"> 
+      <double>10.0</double> 
+     </void> 
+     <void property="toppings"> 
+      <void method="add"> 
+       <string>Ham</string> 
+      </void> 
+      <void method="add"> 
+       <string>Pepperoni</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.SideItem"> 
+     <void property="description"> 
+      <string>Chips</string> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.SideItem"> 
+     <void property="description"> 
+      <string>Fried Chicken</string> 
+     </void> 
+     <void property="size"> 
+      <double>2.0</double> 
+     </void> 
+    </object> 
+   </void> 
   </void> 
  </object> 
 </java> 
