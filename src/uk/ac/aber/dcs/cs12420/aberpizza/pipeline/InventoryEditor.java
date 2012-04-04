@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.cs12420.aberpizza.pipeline;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.util.LinkedList;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
@@ -138,7 +139,17 @@ public class InventoryEditor {
 			case ADD_PIZZA:
 			case ADD_DRINK:
 			case ADD_SIDE:
-				item = new PizzaItem();
+				
+				if (state == State.ADD_PIZZA) {
+					item = new PizzaItem();
+				}
+				if (state == State.ADD_DRINK) {
+					item = new DrinkItem();
+				}
+				if (state == State.ADD_SIDE) {
+					item = new SideItem();
+				}
+				
 				System.out.println("Enter description or 'D' to cancel.");
 				s = input.readLine();
 				if (s.compareTo("D") == 0) {
@@ -147,13 +158,25 @@ public class InventoryEditor {
 				}
 				item.setDescription(s);
 				
-				System.out.println("Enter size, in inches of radius");
+				if (state == State.ADD_PIZZA) {
+					System.out.println("Enter size, in inches of radius");
+				}
+				if (state == State.ADD_DRINK) {
+					System.out.println("Enter size, in real liters");
+				}
+				if (state == State.ADD_SIDE) {
+					System.out.println("Enter size, in number of pieces");
+				}
 				s = input.readLine();
 				if (s.compareTo("D") == 0) {
 					state = State.EDITOR;
 					continue;
 				}
 				((AbstractItem) item).setSize(Double.parseDouble(s));
+				
+				if (state == State.ADD_PIZZA) {
+					((PizzaItem) item).setToppings(toppings() );
+				}
 				
 				System.out.println("Enter price, as a decimal number of pounds.");
 				s = input.readLine();
@@ -175,6 +198,20 @@ public class InventoryEditor {
 			}
 		}
 
+	}
+	
+	public static LinkedList<String> toppings() throws IOException {
+		LinkedList<String> list = new LinkedList<String>();
+		while (true) {
+			System.out.println("Enter topping as string or @ to terminate.");
+			String s = input.readLine();
+			if (s.compareTo("@" ) ==0) {
+				return list;
+			}
+			list.add(s);
+		}
+		
+		
 	}
 
 }
