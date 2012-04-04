@@ -159,10 +159,10 @@ public class InventoryEditor {
 				item.setDescription(s);
 				
 				if (state == State.ADD_PIZZA) {
-					System.out.println("Enter size, in inches of radius");
+					System.out.println("Enter size, in inches");
 				}
 				if (state == State.ADD_DRINK) {
-					System.out.println("Enter size, in real liters");
+					System.out.println("Enter size, in liters");
 				}
 				if (state == State.ADD_SIDE) {
 					System.out.println("Enter size, in number of pieces");
