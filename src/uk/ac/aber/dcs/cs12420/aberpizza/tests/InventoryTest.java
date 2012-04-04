@@ -16,14 +16,14 @@ public class InventoryTest extends TestCase {
 	public void setUp() {
 		fixture = new Inventory();
 		testItem = new TestItem();
-		fixture.add(testItem);
+		fixture.getItems().add(testItem);
 	}
 	
 	@Test
 	public void testItem() {
 		
 		assertTrue("Expected item to be in fixture.",
-				fixture.view().contains(testItem) );
+				fixture.getItems().contains(testItem) );
 	}
 	
 	@Test
@@ -39,8 +39,8 @@ public class InventoryTest extends TestCase {
 		}
 		
 		assertEquals("Inventories expected to be the same.",
-				((Item) fixture.view().toArray()[0]).getDescription(), 
-				((Item) loaded.view().toArray()[0]).getDescription() );
+				((Item) fixture.getItems().toArray()[0]).getDescription(), 
+				((Item) loaded.getItems().toArray()[0]).getDescription() );
 		
 	}
 

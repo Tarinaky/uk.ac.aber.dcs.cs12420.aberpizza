@@ -20,23 +20,8 @@ public class Inventory {
 		items = new ArrayList<Item>();
 	}
 	
-	/**
-	 * Sugar adding an item to the collection items. This should be
-	 * equivalent to using view().add.
-	 * 
-	 * @param item Item to be added to the collection.
-	 * @see #view()
-	 */
-	public void add(Item item) { items.add(item); }
-	
-	/**
-	 * Returns a handle to the Collection of items stored by the
-	 * inventory.
-	 * 
-	 * @return Handle to items object.
-	 * @see #add(Item)
-	 */
-	public Collection<Item> view() { return items; }
+	public ArrayList<Item> getItems() { return items; }
+	public void setItems(ArrayList<Item> items) { this.items = items; }
 	
 	public void save(String filename) throws IOException {
 		if (filename == null) {
@@ -53,7 +38,7 @@ public class Inventory {
 		XMLEncoder encoder = new XMLEncoder(
 				new BufferedOutputStream(
 						new FileOutputStream(path)));
-		encoder.writeObject(items);
+		encoder.writeObject(this);
 		encoder.close();
 		
 	}
@@ -70,8 +55,7 @@ public class Inventory {
 				new BufferedInputStream(
 						new FileInputStream(path)));
 		//Inventory inventory = (Inventory)decoder.readObject();
-		Inventory inventory = new Inventory();
-		inventory.view().addAll((Collection<? extends Item>) decoder.readObject() );
+		Inventory inventory = (Inventory) decoder.readObject();
 		decoder.close();
 		
 		return inventory;
