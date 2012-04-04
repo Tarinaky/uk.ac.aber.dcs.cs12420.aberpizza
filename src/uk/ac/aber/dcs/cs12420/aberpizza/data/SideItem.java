@@ -6,4 +6,10 @@ public class SideItem extends AbstractItem {
 		setDescription("Default side order");
 	}
 	
+	public String toString() {
+		String s = "Side order, " + getDescription() + ", " + getSize() + " pieces, £" +
+				getPrice();
+		return s;
+	}
+	
 }

@@ -8,6 +8,10 @@ public class DrinkItem extends AbstractItem {
 		setDescription("Default drink");
 	}
 	
-	
+	public String toString() {
+		String s = "Side order, " + getDescription() + ", " + getSize() + "L , £" +
+				getPrice();
+		return s;
+	}
 	
 }
