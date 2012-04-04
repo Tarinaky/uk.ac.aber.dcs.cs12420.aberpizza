@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <java version="1.6.0_29" class="java.beans.XMLDecoder"> 
- <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.Inventory"/> 
+ <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.Inventory"> 
+  <void property="items"> 
+   <void method="add"> 
+    <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.DrinkItem"> 
+     <void property="description"> 
+      <string>ACME Cola</string> 
+     </void> 
+     <void property="size"> 
+      <double>0.5</double> 
+     </void> 
+    </object> 
+   </void> 
+  </void> 
+ </object> 
 </java> 

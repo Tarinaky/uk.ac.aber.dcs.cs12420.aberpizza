@@ -9,7 +9,7 @@ public class DrinkItem extends AbstractItem {
 	}
 	
 	public String toString() {
-		String s = "Side order, " + getDescription() + ", " + getSize() + "L , £" +
+		String s = "Drink, " + getDescription() + ", " + getSize() + "L , £" +
 				getPrice();
 		return s;
 	}
