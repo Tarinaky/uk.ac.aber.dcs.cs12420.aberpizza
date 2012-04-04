@@ -6,7 +6,7 @@ import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
 public class InventoryEditor {
 
-	private enum State { EXIT, START, NEW, LOAD, SAVE, EDITOR,
+	private enum State { EXIT, START, NEW, LOAD, SAVE, EDITOR, QUIT,
 		HELP, LIST, EXAMINE, ADD, REMOVE,
 		ADD_PIZZA, ADD_DRINK, ADD_SIDE} ;
 	private static State state = State.START;
@@ -47,6 +47,7 @@ public class InventoryEditor {
 				continue;
 			case SAVE:
 				inventory.save(null);
+				System.out.println("Saved.");
 				state = State.EDITOR;
 				continue;
 			case EDITOR:
@@ -78,6 +79,10 @@ public class InventoryEditor {
 				case 'S':
 					state = State.SAVE;
 					continue;
+				case 'q':
+				case 'Q':
+					state = State.QUIT;
+					continue;
 				}
 			case HELP:
 				System.out.println("? help");
@@ -86,6 +91,7 @@ public class InventoryEditor {
 				System.out.println("EXamine");
 				System.out.println("Remove");
 				System.out.println("Save");
+				System.out.println("Quit");
 				state = State.EDITOR;
 				continue;
 			case LIST:
@@ -99,16 +105,16 @@ public class InventoryEditor {
 				System.out.println("(2) Add Drink");
 				System.out.println("(3) Add Side");
 				System.out.println("(D) Cancel");
-				s = input.readLine();
-				if (s == "1") { state = State.ADD_PIZZA; }
-				if (s == "2") { state = State.ADD_DRINK; }
-				if (s == "3") { state = State.ADD_SIDE; }
-				if (s == "D") { state = State.EDITOR; } 
+				c = input.readLine().charAt(0);
+				if (c == '1') { state = State.ADD_PIZZA; }
+				if (c == '2') { state = State.ADD_DRINK; }
+				if (c == '3') { state = State.ADD_SIDE; }
+				if (c == 'D' || c == 'd') { state = State.EDITOR; } 
 				continue;
 			case EXAMINE:
 				System.out.println("Enter item number or D to cancel.");
 				s = input.readLine();
-				if (s == "D") { 
+				if (s.charAt(0) == 'D' || s.charAt(0) == 'd') { 
 					state = State.EDITOR; 
 					continue; 
 				}
@@ -119,7 +125,7 @@ public class InventoryEditor {
 			case REMOVE:
 				System.out.println("Enter item number ot D to cancel.");
 				s = input.readLine();
-				if (s == "D") {
+				if (s.charAt(0) == 'D' || s.charAt(0) == 'd') {
 					state = State.EDITOR;
 					continue;
 				}
@@ -127,7 +133,7 @@ public class InventoryEditor {
 				inventory.getItems().remove(i);
 				state = State.EDITOR;
 				continue;
-			
+							
 			default:
 				return;
 			
