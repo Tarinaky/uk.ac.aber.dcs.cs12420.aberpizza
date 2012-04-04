@@ -3,6 +3,7 @@ package uk.ac.aber.dcs.cs12420.aberpizza.gui;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -53,18 +54,37 @@ public class OrderBuilder {
 		int y = 1;
 		int x = 0;
 		
+		LinkedList<ItemGroupButton> groups = new LinkedList<ItemGroupButton>();
+				
 		for (Item item : inventory.getItems()) {
 			if (item instanceof PizzaItem) {
-				c.gridy = y;
-				c.gridx = x;
-				JButton button = new JButton(item.getDescription() );
-				right.add(button, c);
+				String desc = item.getDescription();
+				ItemGroupButton group = null;
+				for (ItemGroupButton match : groups) {
+					if (desc.compareTo(match.getDescription() ) == 0) {
+						group = match;
+						break;
+					}
+				}
 				
-				if (x >= 5) {
-					y++;
-					x = 0;
+				if (group == null) { // Create new group and add a button.
+					group = new ItemGroupButton(item);
+					groups.add(group);
+					//TODO: Associate group to the action listener.
+					
+					c.gridy = y;
+					c.gridx = x;
+					JButton button = new JButton(item.getDescription() );
+					right.add(button, c);
+				
+					if (x >= 5) {
+						y++;
+						x = 0;
+					} else {
+						x++;
+					}
 				} else {
-					x++;
+					group.add(item);//Pack the matched item into the right group.
 				}
 			}
 		}
