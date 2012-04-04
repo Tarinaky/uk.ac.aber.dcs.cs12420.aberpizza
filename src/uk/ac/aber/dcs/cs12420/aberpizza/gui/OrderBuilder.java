@@ -17,6 +17,7 @@ public class OrderBuilder {
 	private Inventory inventory = null;
 	private JSplitPane panel = null;
 	private JPanel right;
+	private int y,x;
 	
 	public OrderBuilder (Inventory inventory) {
 		this.inventory = inventory;
@@ -51,42 +52,14 @@ public class OrderBuilder {
 		resetButtons();
 		
 		GridBagConstraints c = new GridBagConstraints();
-		int y = 1;
-		int x = 0;
+		y = 1;
+		x = 0;
 		
 		LinkedList<ItemGroupButton> groups = new LinkedList<ItemGroupButton>();
 				
 		for (Item item : inventory.getItems()) {
 			if (item instanceof PizzaItem) {
-				String desc = item.getDescription();
-				ItemGroupButton group = null;
-				for (ItemGroupButton match : groups) {
-					if (desc.compareTo(match.getDescription() ) == 0) {
-						group = match;
-						break;
-					}
-				}
-				
-				if (group == null) { // Create new group and add a button.
-					group = new ItemGroupButton(item);
-					groups.add(group);
-					//TODO: Associate group to the action listener.
-					
-					c.gridy = y;
-					c.gridx = x;
-					JButton button = new JButton(item.getDescription() );
-					button.addActionListener(new ItemGroupListener(order, group));
-					right.add(button, c);
-				
-					if (x >= 5) {
-						y++;
-						x = 0;
-					} else {
-						x++;
-					}
-				} else {
-					group.add(item);//Pack the matched item into the right group.
-				}
+				makeButton(item, groups, c);
 			}
 		}
 		
@@ -97,6 +70,18 @@ public class OrderBuilder {
 	public void showDrinks() {
 		resetButtons();
 		
+		GridBagConstraints c = new GridBagConstraints();
+		y = 1;
+		x = 0;
+		
+		LinkedList<ItemGroupButton> groups = new LinkedList<ItemGroupButton>();
+				
+		for (Item item : inventory.getItems()) {
+			if (item instanceof DrinkItem) {
+				makeButton(item, groups, c);
+			}
+		}
+		
 		right.repaint();
 		
 	}
@@ -104,8 +89,53 @@ public class OrderBuilder {
 	public void showSides() {
 		resetButtons();
 		
+		GridBagConstraints c = new GridBagConstraints();
+		y = 1;
+		x = 0;
+		
+		LinkedList<ItemGroupButton> groups = new LinkedList<ItemGroupButton>();
+				
+		for (Item item : inventory.getItems()) {
+			if (item instanceof SideItem) {
+				makeButton(item, groups, c);
+			}
+		}
+		
 		right.repaint();
 		
+	}
+	
+	public void makeButton(Item item, LinkedList<ItemGroupButton> groups, 
+			GridBagConstraints c) {
+		
+		String desc = item.getDescription();
+		ItemGroupButton group = null;
+		for (ItemGroupButton match : groups) {
+			if (desc.compareTo(match.getDescription() ) == 0) {
+				group = match;
+				break;
+			}
+		}
+		
+		if (group == null) { // Create new group and add a button.
+			group = new ItemGroupButton(item);
+			groups.add(group);
+			
+			c.gridy = y;
+			c.gridx = x;
+			JButton button = new JButton(item.getDescription() );
+			button.addActionListener(new ItemGroupListener(order, group));
+			right.add(button, c);
+		
+			if (x >= 5) {
+				y++;
+				x = 0;
+			} else {
+				x++;
+			}
+		} else {
+			group.add(item);//Pack the matched item into the right group.
+		}
 	}
 	
 	public Component getComponent() {
