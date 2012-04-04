@@ -88,13 +88,13 @@ public class InventoryEditor {
 					continue;
 				}
 			case HELP:
-				System.out.println("? help");
-				System.out.println("List");
-				System.out.println("Add");
-				System.out.println("EXamine");
-				System.out.println("Remove");
-				System.out.println("Save");
-				System.out.println("Quit");
+				System.out.println("(?) help");
+				System.out.println("(L)ist");
+				System.out.println("(A)dd");
+				System.out.println("(E)(X)amine");
+				System.out.println("(R)emove");
+				System.out.println("(S)ave");
+				System.out.println("(Q)uit");
 				state = State.EDITOR;
 				continue;
 			case LIST:
