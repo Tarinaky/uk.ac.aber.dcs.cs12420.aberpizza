@@ -24,12 +24,11 @@ public class OrderBuilder {
 	
 	public OrderBuilder (Inventory inventory) {
 		this.inventory = inventory;
-		newOrder();
+		
 		
 		panel = new JSplitPane();
 				
-		showPizza();
-		drawOrder();
+		newOrder();
 		
 	}
 	
@@ -178,6 +177,8 @@ public class OrderBuilder {
 	
 	public void newOrder () {
 		order = new Order();
+		showPizza();
+		drawOrder();
 	}
 	
 	public Order getOrder() {
