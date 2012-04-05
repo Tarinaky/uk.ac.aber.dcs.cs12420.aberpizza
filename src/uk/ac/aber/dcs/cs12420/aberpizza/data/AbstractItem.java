@@ -18,6 +18,13 @@ public abstract class AbstractItem implements Item {
 		this.price = price;
 		
 	}
+	
+	public void setStringPrice(String s) {
+		this.price = new BigDecimal(s);
+	}
+	public String getStringPrice() {
+		return this.price.toString();
+	}
 
 	@Override
 	public String getDescription() {

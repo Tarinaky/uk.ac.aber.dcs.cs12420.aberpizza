@@ -47,5 +47,17 @@ public class TestItem implements Item {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String getStringPrice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setStringPrice(String s) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

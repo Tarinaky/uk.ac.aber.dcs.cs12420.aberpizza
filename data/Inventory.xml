@@ -10,6 +10,9 @@
      <void property="size"> 
       <double>0.5</double> 
      </void> 
+     <void property="stringPrice"> 
+      <string>0.70</string> 
+     </void> 
     </object> 
    </void> 
    <void method="add"> 
@@ -20,6 +23,9 @@
      <void property="size"> 
       <double>1.25</double> 
      </void> 
+     <void property="stringPrice"> 
+      <string>1.49</string> 
+     </void> 
     </object> 
    </void> 
    <void method="add"> 
@@ -29,6 +35,9 @@
      </void> 
      <void property="size"> 
       <double>7.0</double> 
+     </void> 
+     <void property="stringPrice"> 
+      <string>7.99</string> 
      </void> 
      <void property="toppings"> 
       <void method="add"> 
@@ -59,6 +68,9 @@
      </void> 
      <void property="size"> 
       <double>7.0</double> 
+     </void> 
+     <void property="stringPrice"> 
+      <string>7.99</string> 
      </void> 
      <void property="toppings"> 
       <void method="add"> 
@@ -93,6 +105,9 @@
      <void property="description"> 
       <string>Chips</string> 
      </void> 
+     <void property="stringPrice"> 
+      <string>1.2</string> 
+     </void> 
     </object> 
    </void> 
    <void method="add"> 
@@ -102,6 +117,9 @@
      </void> 
      <void property="size"> 
       <double>2.0</double> 
+     </void> 
+     <void property="stringPrice"> 
+      <string>2</string> 
      </void> 
     </object> 
    </void> 

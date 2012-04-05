@@ -14,6 +14,9 @@ public interface Item {
 	public BigDecimal getPrice();
 	public void setPrice(BigDecimal price);
 	
+	public String getStringPrice();
+	public void setStringPrice(String s);
+	
 	public String getDescription();
 	public void setDescription(String description);
 	
