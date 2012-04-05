@@ -34,6 +34,8 @@ public class OrderItem {
 		this.item = item; 
 	}
 	
+	public Item getItem() { return item; }
+	
 	/**
 	 * @return The number of copies of this item in this entry.
 	 */

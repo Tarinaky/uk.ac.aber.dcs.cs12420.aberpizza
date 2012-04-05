@@ -36,6 +36,7 @@ public class OrderBuilder {
 		left = new JPanel(new GridBagLayout() );
 		panel.setLeftComponent(left);
 		GridBagConstraints c = new GridBagConstraints();
+		JButton button = null;
 		
 		y = 0;
 				
@@ -48,13 +49,20 @@ public class OrderBuilder {
 			left.add(new JLabel("x"+entry.getQuantity() ), c);*/
 			
 			c.gridx = 2;
-			left.add(new JButton("+1"), c);
+			button = new JButton("+1");
+			button.addActionListener(new PlusOneListener(order, entry.getItem(), this));
+			left.add(button, c);
 			
 			c.gridx = 3;
-			left.add(new JButton("-1"), c);
+			button = new JButton("-1");
+			button.addActionListener(new MinusOneListener(order, entry.getItem(), this));
+			left.add(button, c);
 			
 			c.gridx = 4;
-			left.add(new JButton("X"), c);
+			button = new JButton("X");
+			button.addActionListener(new RemoveListener(order, entry.getItem(), this));
+			left.add(button, c);
+			
 			y++;
 		}
 		
