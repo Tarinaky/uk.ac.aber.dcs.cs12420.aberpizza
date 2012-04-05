@@ -157,7 +157,7 @@ public class OrderBuilder {
 			c.gridy = y;
 			c.gridx = x;
 			JButton button = new JButton(item.getDescription() );
-			button.addActionListener(new ItemGroupListener(order, group));
+			button.addActionListener(new ItemGroupListener(order, group, this));
 			right.add(button, c);
 		
 			if (x >= 5) {

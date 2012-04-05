@@ -13,10 +13,12 @@ import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 public class ItemGroupPicker extends JDialog {
 	
 	private Order order = null;
+	private OrderBuilder builder = null;
 	
 
-	public ItemGroupPicker(Order order, ItemGroupButton group) {
+	public ItemGroupPicker(Order order, ItemGroupButton group, OrderBuilder builder) {
 		this.order = order;
+		this.builder = builder;
 		setModal(true);
 				
 		GridBagLayout layout = new GridBagLayout();
@@ -25,7 +27,7 @@ public class ItemGroupPicker extends JDialog {
 		for (Item item : group.getList() ) {
 			Double size = new Double(item.getSize() );
 			JButton button = new JButton(size.toString() );
-			button.addActionListener(new ItemGroupPickerListener(order,this,item));
+			button.addActionListener(new ItemGroupPickerListener(order,this,item,builder));
 			add(button);
 
 				

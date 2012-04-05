@@ -9,10 +9,12 @@ public class ItemGroupListener implements ActionListener {
 	
 	private Order order = null;
 	private ItemGroupButton group = null;
+	private OrderBuilder builder = null;
 
-	public ItemGroupListener(Order order, ItemGroupButton group) {
+	public ItemGroupListener(Order order, ItemGroupButton group, OrderBuilder builder) {
 		this.order = order;
 		this.group = group;
+		this.builder = builder;
 	
 	}
 	
@@ -23,7 +25,7 @@ public class ItemGroupListener implements ActionListener {
 			return;
 		}
 		
-		ItemGroupPicker dialogue = new ItemGroupPicker(order, group);
+		ItemGroupPicker dialogue = new ItemGroupPicker(order, group, builder);
 		dialogue.show();
 
 	}
