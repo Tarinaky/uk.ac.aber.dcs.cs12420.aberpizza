@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
@@ -18,7 +19,7 @@ public class OrderBuilder {
 	private Order order = null;
 	private Inventory inventory = null;
 	private JSplitPane panel = null;
-	private JPanel right;
+	private JPanel right,left;
 	private int y,x;
 	
 	public OrderBuilder (Inventory inventory) {
@@ -28,7 +29,34 @@ public class OrderBuilder {
 		panel = new JSplitPane();
 				
 		showPizza();
+		drawOrder();
 		
+	}
+	
+	public void drawOrder() {
+		left = new JPanel(new GridBagLayout() );
+		panel.setLeftComponent(left);
+		GridBagConstraints c = new GridBagConstraints();
+		
+		y = 0;
+				
+		for (OrderItem entry : order.getEntries() ) {
+			c.gridy = y;
+			c.gridx = 0;
+			left.add(new JLabel(entry.getDescription() ), c);
+			
+			c.gridx = 1;
+			left.add(new JLabel(""+entry.getQuantity() ), c);
+			
+			c.gridx = 2;
+			left.add(new JButton("+1"), c);
+			
+			c.gridx = 3;
+			left.add(new JButton("-1"), c);
+			
+			c.gridx = 4;
+			left.add(new JButton("X"), c);
+		}
 	}
 	
 	public void resetButtons() {

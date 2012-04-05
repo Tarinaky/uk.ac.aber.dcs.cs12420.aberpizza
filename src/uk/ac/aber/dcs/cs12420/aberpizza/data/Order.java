@@ -1,6 +1,7 @@
 package uk.ac.aber.dcs.cs12420.aberpizza.data;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -84,6 +85,10 @@ public class Order {
 		}
 
 		addItem(item,quantity);
+	}
+	
+	public Collection<OrderItem> getEntries() {
+		return orderTable.values();
 	}
 	
 	/**

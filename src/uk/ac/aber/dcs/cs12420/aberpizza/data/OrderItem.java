@@ -41,6 +41,10 @@ public class OrderItem {
 		return quantity;
 	}
 	
+	public String getDescription() {
+		return item.getDescription();
+	}
+	
 	/**
 	 * Implemented by multiplying the 'quantity' field by the price stored inside the item.
 	 * 
