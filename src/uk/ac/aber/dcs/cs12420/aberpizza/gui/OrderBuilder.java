@@ -57,6 +57,14 @@ public class OrderBuilder {
 			left.add(new JButton("X"), c);
 			y++;
 		}
+		
+		c.gridx = 0;
+		c.gridy = y;
+		
+		left.add(new JLabel("Total: "), c);
+		
+		c.gridx = 1;
+		left.add(new JLabel(""+order.getSubtotal()), c);
 	}
 	
 	public void resetButtons() {
