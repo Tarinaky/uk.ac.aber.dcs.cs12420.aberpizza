@@ -46,7 +46,7 @@ public class OrderBuilder {
 			left.add(new JLabel(entry.getDescription() ), c);
 			
 			c.gridx = 1;
-			left.add(new JLabel(""+entry.getQuantity() ), c);
+			left.add(new JLabel("x"+entry.getQuantity() ), c);
 			
 			c.gridx = 2;
 			left.add(new JButton("+1"), c);
