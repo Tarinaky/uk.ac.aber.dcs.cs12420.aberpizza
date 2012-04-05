@@ -7,8 +7,15 @@ public class SideItem extends AbstractItem {
 	}
 	
 	public String toString() {
-		String s = "Side order, " + getDescription() + ", " + getSize() + " pieces, £" +
-				getPrice();
+		String s;
+		if (getSize() == 1) {
+			s = "Side order, " + getDescription() + ", " + " £" +
+					getPrice();
+		}
+		else {
+			s = "Side order, " + getDescription() + ", " + (int)getSize() + " pieces, £" +
+					getPrice();
+		}
 		return s;
 	}
 	
