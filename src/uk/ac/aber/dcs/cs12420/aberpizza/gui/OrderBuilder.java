@@ -43,10 +43,10 @@ public class OrderBuilder {
 		for (OrderItem entry : order.getEntries() ) {
 			c.gridy = y;
 			c.gridx = 0;
-			left.add(new JLabel(entry.getDescription() ), c);
+			left.add(new JLabel(entry.toString() ), c);
 			
-			c.gridx = 1;
-			left.add(new JLabel("x"+entry.getQuantity() ), c);
+			/*c.gridx = 1;
+			left.add(new JLabel("x"+entry.getQuantity() ), c);*/
 			
 			c.gridx = 2;
 			left.add(new JButton("+1"), c);
@@ -56,6 +56,7 @@ public class OrderBuilder {
 			
 			c.gridx = 4;
 			left.add(new JButton("X"), c);
+			y++;
 		}
 	}
 	

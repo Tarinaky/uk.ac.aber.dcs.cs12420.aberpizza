@@ -41,8 +41,8 @@ public class OrderItem {
 		return quantity;
 	}
 	
-	public String getDescription() {
-		return item.getDescription();
+	public String toString() {
+		return item.toString() + " x"+getQuantity();
 	}
 	
 	/**
