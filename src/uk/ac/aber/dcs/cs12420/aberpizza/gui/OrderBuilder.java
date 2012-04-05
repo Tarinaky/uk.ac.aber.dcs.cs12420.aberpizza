@@ -43,10 +43,10 @@ public class OrderBuilder {
 		for (OrderItem entry : order.getEntries() ) {
 			c.gridy = y;
 			c.gridx = 0;
-			left.add(new JLabel(entry.toString() ), c);
+			left.add(new JLabel(entry.getItem().toString() ), c);
 			
-			/*c.gridx = 1;
-			left.add(new JLabel("x"+entry.getQuantity() ), c);*/
+			c.gridx = 1;
+			left.add(new JLabel("x"+entry.getQuantity() ), c);
 			
 			c.gridx = 2;
 			button = new JButton("+1");
