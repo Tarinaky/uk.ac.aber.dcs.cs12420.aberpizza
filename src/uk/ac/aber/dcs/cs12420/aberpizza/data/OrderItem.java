@@ -42,7 +42,7 @@ public class OrderItem {
 	}
 	
 	public String toString() {
-		return item.toString() + " x"+getQuantity();
+		return item.toString() + "        x"+getQuantity();
 	}
 	
 	/**
