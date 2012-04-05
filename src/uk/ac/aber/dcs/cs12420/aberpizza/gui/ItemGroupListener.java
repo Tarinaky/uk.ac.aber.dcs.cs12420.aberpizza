@@ -22,6 +22,7 @@ public class ItemGroupListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		if (group.getList().size() < 2) {
 			order.updateItemQuantity(group.getList().getFirst(), 1);
+			builder.drawOrder();
 			return;
 		}
 		
