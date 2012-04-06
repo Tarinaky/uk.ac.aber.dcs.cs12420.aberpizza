@@ -1,5 +1,12 @@
 package uk.ac.aber.dcs.cs12420.aberpizza.data;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -37,6 +44,14 @@ public class Till {
 			}
 		}
 		return s;
+	}
+	
+	public void setOrders(LinkedList<Order> orders) {
+		this.orders = orders;
+	}
+	
+	public LinkedList<Order> getOrders() {
+		return orders;
 	}
 	
 	/**
@@ -81,9 +96,31 @@ public class Till {
 		return total;
 	}
 	
-	public void save() throws IOException {}
+	public void save() throws IOException {
+		File path = new File ("data");
+		
+		if (path.exists() != true) {
+			path.mkdir();
+		}
+		path = new File(path, "till.xml");
+		
+		XMLEncoder encoder = new XMLEncoder(
+				new BufferedOutputStream(
+						new FileOutputStream(path)));
+		encoder.writeObject(this);
+		encoder.close();
+		
+	}
 	
 	public static Till load() throws IOException {
-		return null;}
+		File path = new File("data", "till.xml");
+		
+		XMLDecoder decoder = new XMLDecoder(
+				new BufferedInputStream(
+						new FileInputStream(path)));
+		Till till = (Till) decoder.readObject();
+		decoder.close();
+		return till;
+	}
 	
 }
