@@ -24,9 +24,9 @@ public class OrderPlacer {
 	/**
 	 * Handle to the model that this view inserts orders into.
 	 */
-	private Till till = null;
-	private Inventory inventory = null;
-	private OrderBuilder orderPanel = null;
+	private Till till;
+	private Inventory inventory;
+	private OrderBuilder orderPanel;
 	
 	/**
 	 * Create, arrange and set visible the elements of the JFrame.
@@ -38,18 +38,17 @@ public class OrderPlacer {
 		try {
 			this.till = Till.load();
 		} catch (IOException e1) {
-			e1.printStackTrace();
-			// TODO: Display error message that till could not be openned.
-			till = new Till();
+			this.till = new Till();
+			//e1.printStackTrace();
+			
 		}
 		
 		try {
 			inventory = Inventory.load(null);
 		} catch (IOException e) {
+			//inventory = new Inventory();
 			e.printStackTrace();
-			
-			// TODO: Display error message that inventory could not be opened.
-			inventory = new Inventory();
+			System.exit(0);
 		}
 		
 		JFrame frame = new JFrame("Order Placer");

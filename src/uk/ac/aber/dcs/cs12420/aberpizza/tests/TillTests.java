@@ -38,6 +38,7 @@ public class TillTests extends TestCase {
 		Order testOrder = new Order();
 		
 		testOrder.addItem(new TestItem(),1);
+		testOrder.setCustomerName("John Test");
 		assertTrue("Subtotal should be 10.99; received "+testOrder.getSubtotal().toString(),
 				testOrder.getSubtotal().compareTo(new BigDecimal(""+10.99)) == 0);
 		
