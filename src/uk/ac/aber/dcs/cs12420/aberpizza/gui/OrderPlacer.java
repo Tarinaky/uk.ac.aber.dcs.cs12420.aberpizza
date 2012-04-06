@@ -30,10 +30,8 @@ public class OrderPlacer {
 	
 	/**
 	 * Create, arrange and set visible the elements of the JFrame.
-	 * 
-	 * @param till The till model that this JFrame should operate upon.
 	 */
-	public OrderPlacer(Till till) {
+	public OrderPlacer() {
 		
 		try {
 			this.till = Till.load();
@@ -97,7 +95,7 @@ public class OrderPlacer {
 	public OrderBuilder order() { return orderPanel; }
 	public Till getTill() { return till; }
 	
-	public static void main (String[] args) { OrderPlacer foo = new OrderPlacer(new Till()); }
+	public static void main (String[] args) { OrderPlacer foo = new OrderPlacer(); }
 	
 
 	
