@@ -45,12 +45,12 @@ public class TillTests extends TestCase {
 		fixture.addOrder(testOrder);
 		
 		fixture.save();
-		fixture = Till.load();
+		Till test = Till.load();
 		
 		assertTrue("Till failed to deserialise properly.\n"+
-				"Loaded: "+testOrder
-				+"\nExpected: "+fixture.getOrders().getFirst(),
-				testOrder.toString().compareTo(fixture.getOrders().getFirst().toString()) == 0);
+				"Loaded: "+test
+				+"\nExpected: "+fixture,
+				 fixture.toString().compareTo(test.toString())== 0);
 		
 	}
 }
