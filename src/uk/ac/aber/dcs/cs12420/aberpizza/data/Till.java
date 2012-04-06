@@ -27,6 +27,18 @@ public class Till {
 		orders = new LinkedList<Order>();
 	}
 	
+	public String toString() {
+		String s = "";
+		for (Order order : orders) {
+			if (s.compareTo("")==0) {
+				s = ""+order;
+			} else {
+				s = s + " " + order;
+			}
+		}
+		return s;
+	}
+	
 	/**
 	 * 'Places' an order by entering it into the system. An order cannot be modified
 	 * after this point, a new order must be placed instead.
