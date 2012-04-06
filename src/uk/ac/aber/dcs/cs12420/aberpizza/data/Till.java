@@ -62,6 +62,11 @@ public class Till {
 	 */
 	public void addOrder(Order order) {
 		orders.add(order);
+		try {
+			save();
+		} catch (IOException e) {
+			System.err.println("Could not write to file.");
+		}
 	}
 	
 	/**
@@ -102,7 +107,11 @@ public class Till {
 		if (path.exists() != true) {
 			path.mkdir();
 		}
-		path = new File(path, "till.xml");
+		
+		final long milisInADay = 24 * 60 * 60 * 1000;
+		Date today = new Date((new Date().getTime()/milisInADay)*milisInADay);
+				
+		path = new File(path, ""+today.getTime()+".xml" );
 		
 		XMLEncoder encoder = new XMLEncoder(
 				new BufferedOutputStream(
@@ -113,7 +122,10 @@ public class Till {
 	}
 	
 	public static Till load() throws IOException {
-		File path = new File("data", "till.xml");
+		final long milisInADay = 24 * 60 * 60 * 1000;
+		Date today = new Date((new Date().getTime()/milisInADay)*milisInADay);
+		
+		File path = new File("data", ""+today.getTime()+".xml" );
 		
 		XMLDecoder decoder = new XMLDecoder(
 				new BufferedInputStream(
