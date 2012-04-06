@@ -35,12 +35,22 @@ public class Order {
 	private Map<Item,OrderItem> orderTable = null;
 	
 	public Order() {
-		orderTable = new HashMap<Item,OrderItem>();
-		date = new Date();
+		setOrderTable(new HashMap<Item,OrderItem>());
+		setDate(new Date());
 	}
 	
 	public String toString() {
-		return ""+customerName+" "+date+" "+orderTable;
+		String s = "";
+		for (OrderItem entry : orderTable.values()) {
+			if (s.compareTo("") == 0) {
+				s = s + customerName+" "+getDate()+" [";
+				s = s + entry;
+			} else {
+				s = s + ", " + entry.toString();
+			}
+		}
+		s = s + "]";
+		return s;
 	}
 	
 	public void setCustomerName(String name) {
@@ -65,9 +75,9 @@ public class Order {
 	 */
 	public void addItem(Item item, int quantity) {
 		if (quantity > 0) {
-			orderTable.put(item, new OrderItem(item, quantity) );
+			getOrderTable().put(item, new OrderItem(item, quantity) );
 		} else {
-			orderTable.remove(item);
+			getOrderTable().remove(item);
 		}
 	}
 	
@@ -82,8 +92,8 @@ public class Order {
 	 * @see #orderTable
 	 */
 	public void updateItemQuantity(Item item, int quantity) {
-		if ( orderTable.containsKey(item) ) {
-			quantity += orderTable.get(item).getQuantity();
+		if ( getOrderTable().containsKey(item) ) {
+			quantity += getOrderTable().get(item).getQuantity();
 		} else if (quantity <= 0) {
 			return;
 		}
@@ -92,7 +102,7 @@ public class Order {
 	}
 	
 	public Collection<OrderItem> getEntries() {
-		return orderTable.values();
+		return getOrderTable().values();
 	}
 	
 	/**
@@ -107,7 +117,7 @@ public class Order {
 	 */
 	public BigDecimal getSubtotal() {
 		BigDecimal subtotal = new BigDecimal(""+0);
-		for (OrderItem item : orderTable.values() ) {
+		for (OrderItem item : getOrderTable().values() ) {
 			subtotal = subtotal.add(item.getOrderItemTotal() );
 		}
 		return subtotal;
@@ -128,5 +138,17 @@ public class Order {
 	 */
 	public Date getDate() {
 		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Map<Item,OrderItem> getOrderTable() {
+		return orderTable;
+	}
+
+	public void setOrderTable(Map<Item,OrderItem> orderTable) {
+		this.orderTable = orderTable;
 	}
 }

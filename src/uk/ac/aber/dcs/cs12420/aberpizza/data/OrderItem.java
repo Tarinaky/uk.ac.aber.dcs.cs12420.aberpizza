@@ -24,14 +24,18 @@ public class OrderItem {
 	private Item item;
 	
 	/**
-	 * Basic constructor.
+	 * 
 	 * 
 	 * @param item The item to associate with this entry (eg. Pizza, Soda, etc...) 
 	 * @param quantity The number of 'copies' to add as part of this entry.
 	 */
 	public OrderItem(Item item, int quantity) {
-		this.quantity = quantity;
-		this.item = item; 
+		this.setQuantity(quantity);
+		this.setItem(item); 
+	}
+	
+	public OrderItem() {
+		
 	}
 	
 	public Item getItem() { return item; }
@@ -44,7 +48,7 @@ public class OrderItem {
 	}
 	
 	public String toString() {
-		return item.toString() + "        x"+getQuantity();
+		return getItem().toString() + "        x"+getQuantity();
 	}
 	
 	/**
@@ -53,7 +57,15 @@ public class OrderItem {
 	 * @return The total cost of this order entry.
 	 */
 	public BigDecimal getOrderItemTotal() {
-		return item.getPrice().multiply(new BigDecimal(quantity) );
+		return getItem().getPrice().multiply(new BigDecimal(getQuantity()) );
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 }

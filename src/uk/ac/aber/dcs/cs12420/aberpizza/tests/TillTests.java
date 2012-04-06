@@ -1,5 +1,6 @@
 package uk.ac.aber.dcs.cs12420.aberpizza.tests;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 
 import org.junit.Before;
@@ -32,5 +33,23 @@ public class TillTests extends TestCase {
 		
 	}
 	
-	//TODO: Test serialisation.
+	@Test
+	public void testSerialisation() throws IOException {
+		Order testOrder = new Order();
+		
+		testOrder.addItem(new TestItem(),1);
+		assertTrue("Subtotal should be 10.99; received "+testOrder.getSubtotal().toString(),
+				testOrder.getSubtotal().compareTo(new BigDecimal(""+10.99)) == 0);
+		
+		fixture.addOrder(testOrder);
+		
+		fixture.save();
+		fixture = Till.load();
+		
+		assertTrue("Till failed to deserialise properly.\n"+
+				"Loaded: "+testOrder
+				+"\nExpected: "+fixture.getOrders().getFirst(),
+				testOrder.toString().compareTo(fixture.getOrders().getFirst().toString()) == 0);
+		
+	}
 }
