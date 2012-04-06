@@ -14,6 +14,7 @@ public class SendOrderListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		view.getTill().addOrder(view.order().getOrder());
+		view.order().newOrder();
 
 	}
 
