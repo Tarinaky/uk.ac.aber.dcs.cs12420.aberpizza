@@ -32,7 +32,15 @@ public class OrderPlacer {
 	 * @param till The till model that this JFrame should operate upon.
 	 */
 	public OrderPlacer(Till till) {
-		this.till = till;
+		
+		try {
+			this.till = Till.load();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			// TODO: Display error message that till could not be openned.
+			till = new Till();
+		}
+		
 		try {
 			inventory = Inventory.load(null);
 		} catch (IOException e) {
