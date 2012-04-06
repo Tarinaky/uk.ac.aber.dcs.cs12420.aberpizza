@@ -80,6 +80,7 @@ public class OrderPlacer {
 		layout.add(orderPanel.getComponent(), c);
 		
 		frame.pack();
+		frame.setSize(800,480);
 		frame.setVisible(true);
 	}
 	
