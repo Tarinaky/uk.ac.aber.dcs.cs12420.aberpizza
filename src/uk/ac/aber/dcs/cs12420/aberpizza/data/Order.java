@@ -39,6 +39,10 @@ public class Order {
 		date = new Date();
 	}
 	
+	public String toString() {
+		return ""+customerName+" "+date+" "+orderTable;
+	}
+	
 	public void setCustomerName(String name) {
 		this.customerName = name;
 	}
