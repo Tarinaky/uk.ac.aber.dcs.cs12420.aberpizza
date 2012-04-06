@@ -3,6 +3,8 @@ package uk.ac.aber.dcs.cs12420.aberpizza.gui;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -51,7 +53,8 @@ public class OrderPlacer {
 		}
 		
 		JFrame frame = new JFrame("Order Placer");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.addWindowListener(new ExitListener(frame,till));
 		
 		Container layout = frame.getContentPane();
 		GridBagLayout gbl = new GridBagLayout();
