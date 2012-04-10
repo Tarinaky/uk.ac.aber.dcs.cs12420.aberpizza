@@ -20,11 +20,16 @@ public class SendOrderListener implements ActionListener {
 
 		String stringAmountTendered = (String) JOptionPane.showInputDialog("Enter amount tendered...");
 		java.math.BigDecimal amountTendered = new java.math.BigDecimal(stringAmountTendered);
-		if (amountTendered.compareTo(view.order().getOrder().getSubtotal() ) >=0) {
+
+		java.math.BigDecimal total = view.order().getOrder().getSubtotal();
+
+		if (amountTendered.compareTo(total) >=0) {
 			view.getTill().addOrder(view.order().getOrder());
 			view.order().newOrder();
+
+			JOptionPane.showMessageDialog(view.getComponent(),"Change: \u00A3"+amountTendered.subtract(total) );
 		} else {
-			System.err.println("Insuficient cash.");
+			JOptionPane.showMessageDialog(view.getComponent(),"Insuficient cash tendered.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}

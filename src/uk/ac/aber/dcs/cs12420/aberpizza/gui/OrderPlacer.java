@@ -10,6 +10,8 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
+import javax.swing.*;
+import java.awt.Component;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Inventory;
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Till;
@@ -90,6 +92,10 @@ public class OrderPlacer {
 		frame.pack();
 		frame.setSize(800,480);
 		frame.setVisible(true);
+	}
+
+	public Component getComponent() {
+		return orderPanel.getComponent();
 	}
 	
 	public OrderBuilder order() { return orderPanel; }
