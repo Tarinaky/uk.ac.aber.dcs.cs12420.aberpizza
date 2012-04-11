@@ -10,11 +10,13 @@ public class InventoryEditor {
 
 	private enum State { EXIT, START, NEW, LOAD, SAVE, EDITOR, QUIT,
 		HELP, LIST, EXAMINE, ADD, REMOVE,
-		ADD_PIZZA, ADD_DRINK, ADD_SIDE} ;
+		ADD_PIZZA, ADD_DRINK, ADD_SIDE,
+		ADD_DISCOUNT, ADD_BOGOFDISCOUNT, REMOVE_DISCOUNT} ;
 	private static State state = State.START;
 	private static Inventory inventory = null;
 	private static BufferedReader input = null;
 	private static Item item = null;
+	private static Discount discount = null;
 	
 	/**
 	 * @param args
@@ -78,6 +80,10 @@ public class InventoryEditor {
 				case 'R':
 					state = State.REMOVE;
 					continue;
+				case 'd':
+				case 'D':
+					state = State.REMOVE_DISCOUNT;
+					continue;
 				case 's':
 				case 'S':
 					state = State.SAVE;
@@ -92,14 +98,18 @@ public class InventoryEditor {
 				System.out.println("(L)ist");
 				System.out.println("(A)dd");
 				System.out.println("(E)(X)amine");
-				System.out.println("(R)emove");
+				System.out.println("(R)emove Item");
+				System.out.println("Remove (D)iscount");
 				System.out.println("(S)ave");
 				System.out.println("(Q)uit");
 				state = State.EDITOR;
 				continue;
 			case LIST:
 				for (i = 0; i < inventory.getItems().size(); i++) {
-					System.out.println("("+i+") "+inventory.getItems().get(i).toString() );
+					System.out.println("(Item "+i+") "+inventory.getItems().get(i).toString() );
+				}
+				for (i = 0; i< inventory.getDiscounts().size(); i++) {
+					System.out.println("(Discount "+i+") "+inventory.getDiscounts().get(i).toString() );
 				}
 				state = State.EDITOR;
 				continue;
@@ -107,11 +117,13 @@ public class InventoryEditor {
 				System.out.println("(1) Add Pizza");
 				System.out.println("(2) Add Drink");
 				System.out.println("(3) Add Side");
+				System.out.println("(4) Add Discount");
 				System.out.println("(D) Cancel");
 				c = input.readLine().charAt(0);
 				if (c == '1') { state = State.ADD_PIZZA; }
 				if (c == '2') { state = State.ADD_DRINK; }
 				if (c == '3') { state = State.ADD_SIDE; }
+				if (c == '4') { state = State.ADD_DISCOUNT; }
 				if (c == 'D' || c == 'd') { state = State.EDITOR; } 
 				continue;
 			case EXAMINE:
@@ -134,6 +146,17 @@ public class InventoryEditor {
 				}
 				i = Integer.parseInt(s);
 				inventory.getItems().remove(i);
+				state = State.EDITOR;
+				continue;
+			case REMOVE_DISCOUNT:
+				System.out.println("Enter discount number ot D to cancel.");
+				s = input.readLine();
+				if (s.charAt(0) == 'D' || s.charAt(0) == 'd') {
+					state = State.EDITOR;
+					continue;
+				}
+				i = Integer.parseInt(s);
+				inventory.getDiscounts().remove(i);
 				state = State.EDITOR;
 				continue;
 			case ADD_PIZZA:
@@ -190,7 +213,27 @@ public class InventoryEditor {
 				System.out.println("Item added.");
 				state = State.EDITOR;
 				continue;
+			case ADD_DISCOUNT:
+				System.out.println("(1) BOGOF Discount");
+				c = input.readLine().charAt(0);
+				if (c == '1') { state = State.ADD_BOGOFDISCOUNT; }
+				if (c == 'd' || c == 'D') { state = State.EDITOR; }
+				continue;
+			case ADD_BOGOFDISCOUNT:
+				System.out.println("Enter item number ot D to cancel.");
+				s = input.readLine();
+				if (s.charAt(0) == 'D' || s.charAt(0) == 'd') {
+					state = State.EDITOR;
+					continue;
+				}
+				i = Integer.parseInt(s);
+				item = inventory.getItems().get(i);
+				discount = new BOGOFDiscount();
+				((BOGOFDiscount) discount).setItem(item);
+				inventory.getDiscounts().add(discount);
 				
+				state = State.EDITOR;
+				continue;
 				
 			default:
 				return;

@@ -7,8 +7,9 @@ public interface Discount {
 	public int match(Order order);
 	
 	public String getDescription();
-	public void setDescription(String s);
+	//public void setDescription(String s);
 	
 	public BigDecimal getValue();
-	public void setValue(BigDecimal a);
+	
+	
 }

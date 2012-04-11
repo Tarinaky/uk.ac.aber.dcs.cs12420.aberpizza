@@ -21,19 +21,15 @@ public class BOGOFDiscount extends AbstractDiscount {
 		return item.getPrice();
 	}
 
-	@Override
-	public void setValue(BigDecimal a) {
-		/* ... Do nothing ... */
-	}
-	
 	public void setItem(Item item) {
 		this.item = item;
 	}
 	
 	public Item getItem() { return item; }
 	
-	public String toString() {
-		return "BOGOF: "+getDescription();
+	public String getDescription() {
+		return "BOGOF: "+item.getDescription();
 	}
+
 
 }
