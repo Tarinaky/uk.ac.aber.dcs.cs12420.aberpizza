@@ -120,12 +120,21 @@ public class Order {
 		for (OrderItem item : getOrderTable().values() ) {
 			subtotal = subtotal.add(item.getOrderItemTotal() );
 		}
-		return subtotal;
+		return subtotal.subtract(getDiscount() );
 	}
 	
-	//TODO: Implement
 	public BigDecimal getDiscount() {
-		return null;}
+		Collection<Discount> discounts = Inventory.singleton.getDiscounts();
+		BigDecimal discount = new BigDecimal(""+0);
+		for (Discount entry : discounts) {
+			discount = discount
+					.add(entry.getValue()
+					.multiply(new BigDecimal(""+entry.match(this) ) ) );
+		}
+		
+		return discount;
+		
+	}
 	
 	//TODO: Implement
 	public String getReceipt() {

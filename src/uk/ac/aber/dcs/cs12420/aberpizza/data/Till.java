@@ -111,7 +111,7 @@ public class Till {
 		final long milisInADay = 24 * 60 * 60 * 1000;
 		Date today = new Date((new Date().getTime()/milisInADay)*milisInADay);
 				
-		path = new File(path, ""+today+".xml" );
+		path = new File(path, ""+today.getDate()+".xml" );
 		
 		XMLEncoder encoder = new XMLEncoder(
 				new BufferedOutputStream(
@@ -125,7 +125,7 @@ public class Till {
 		final long milisInADay = 24 * 60 * 60 * 1000;
 		Date today = new Date((new Date().getTime()/milisInADay)*milisInADay);
 		
-		File path = new File("data", ""+today+".xml" );
+		File path = new File("data", ""+today.getDate()+".xml" );
 		
 		XMLDecoder decoder = new XMLDecoder(
 				new BufferedInputStream(

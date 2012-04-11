@@ -17,6 +17,8 @@ public class Inventory {
 	private ArrayList<Item> items = null;
 	private ArrayList<Discount> discounts = null;
 	
+	public static Inventory singleton = null;
+	
 	public Inventory() {
 		items = new ArrayList<Item>();
 		discounts = new ArrayList<Discount>();
@@ -63,6 +65,7 @@ public class Inventory {
 		Inventory inventory = (Inventory) decoder.readObject();
 		decoder.close();
 		
+		singleton = inventory;
 		return inventory;
 		
 	}

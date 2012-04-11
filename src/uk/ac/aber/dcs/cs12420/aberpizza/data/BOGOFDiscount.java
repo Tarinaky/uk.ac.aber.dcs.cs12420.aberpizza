@@ -7,13 +7,12 @@ public class BOGOFDiscount extends AbstractDiscount {
 	
 	@Override
 	public int match(Order order) {
-		int i = 0;
-		for (OrderItem entry : order.getEntries() ) {
-			if (entry.getItem() == this.item) {
-				i++;
-			}
+		OrderItem entry = order.getOrderTable().get(item);
+		if (entry == null) {
+			return 0;
+		} else {
+			return entry.getQuantity()/2;
 		}
-		return i;
 	}
 
 	@Override
