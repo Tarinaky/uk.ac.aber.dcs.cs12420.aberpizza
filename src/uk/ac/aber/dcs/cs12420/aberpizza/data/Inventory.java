@@ -15,13 +15,18 @@ public class Inventory {
 	 * A collection of Items sold by this store.
 	 */
 	private ArrayList<Item> items = null;
+	private ArrayList<Discount> discounts = null;
 	
 	public Inventory() {
 		items = new ArrayList<Item>();
+		discounts = new ArrayList<Discount>();
 	}
 	
 	public ArrayList<Item> getItems() { return items; }
 	public void setItems(ArrayList<Item> items) { this.items = items; }
+	
+	public ArrayList<Discount> getDiscounts() { return discounts; }
+	public void setDiscounts(ArrayList<Discount> discounts) { this.discounts = discounts; }
 	
 	public void save(String filename) throws IOException {
 		if (filename == null) {
