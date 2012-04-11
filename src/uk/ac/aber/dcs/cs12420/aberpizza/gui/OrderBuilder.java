@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.LinkedList;
 
 import javax.swing.JButton;
@@ -64,6 +65,20 @@ public class OrderBuilder {
 			left.add(button, c);
 			
 			y++;
+		}
+		
+		for (Discount entry : inventory.getDiscounts()) {
+			if (entry.match(order) > 0) {
+				c.gridx = 0;
+				c.gridy = y;
+				left.add(new JLabel(entry.toString()), c);
+				
+				c.gridx = 1;
+				left.add(new JLabel("-£"+entry.getValue().multiply(new BigDecimal(""+entry.match(order)))
+						),c);
+				
+				y++;
+			}
 		}
 		
 		c.gridx = 0;
