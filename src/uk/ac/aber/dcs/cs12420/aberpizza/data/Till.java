@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -111,7 +112,7 @@ public class Till {
 		final long milisInADay = 24 * 60 * 60 * 1000;
 		Date today = new Date((new Date().getTime()/milisInADay)*milisInADay);
 				
-		path = new File(path, ""+today.getDate()+".xml" );
+		path = new File(path, ""+niceDate(today)+".xml" );
 		
 		XMLEncoder encoder = new XMLEncoder(
 				new BufferedOutputStream(
@@ -125,7 +126,7 @@ public class Till {
 		final long milisInADay = 24 * 60 * 60 * 1000;
 		Date today = new Date((new Date().getTime()/milisInADay)*milisInADay);
 		
-		File path = new File("data", ""+today.getDate()+".xml" );
+		File path = new File("data", ""+niceDate(today)+".xml" );
 		
 		XMLDecoder decoder = new XMLDecoder(
 				new BufferedInputStream(
@@ -133,6 +134,13 @@ public class Till {
 		Till till = (Till) decoder.readObject();
 		decoder.close();
 		return till;
+	}
+	
+	public static String niceDate(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		String s = ""+c.get(Calendar.YEAR)+"-"+c.get(Calendar.MONTH)+"-"+c.get(Calendar.DATE);
+		return s;
 	}
 	
 }

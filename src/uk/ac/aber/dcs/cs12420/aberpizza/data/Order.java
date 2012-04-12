@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -26,6 +27,7 @@ public class Order {
 	 */
 	private Date date = null;
 	private String customerName = null;
+	private Collection<Discount> appliedDiscounts = null;
 	
 	/**
 	 * A map containing each row of the order
@@ -105,6 +107,14 @@ public class Order {
 		return getOrderTable().values();
 	}
 	
+	public Collection<Discount> getAppliedDiscounts() {
+		return appliedDiscounts;
+	}
+	
+	public void setAppliedDiscounts(Collection<Discount> appliedDiscounts) {
+		this.appliedDiscounts = appliedDiscounts;
+	}
+	
 	/**
 	 * Return the subtotal (before discounts) of this order.
 	 * <p>
@@ -124,12 +134,17 @@ public class Order {
 	}
 	
 	public BigDecimal getDiscount() {
+		appliedDiscounts = new LinkedList<Discount>();
+		
 		Collection<Discount> discounts = Inventory.singleton.getDiscounts();
 		BigDecimal discount = new BigDecimal(""+0);
 		for (Discount entry : discounts) {
 			discount = discount
 					.add(entry.getValue()
 					.multiply(new BigDecimal(""+entry.match(this) ) ) );
+			if(entry.match(this) > 0) {
+				appliedDiscounts.add(entry);
+			}
 		}
 		
 		return discount;
