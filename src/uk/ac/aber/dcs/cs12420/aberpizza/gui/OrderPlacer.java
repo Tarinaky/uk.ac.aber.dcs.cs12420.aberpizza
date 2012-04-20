@@ -3,13 +3,12 @@ package uk.ac.aber.dcs.cs12420.aberpizza.gui;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JToolBar;
 import javax.swing.*;
 import java.awt.Component;
 
@@ -83,11 +82,22 @@ public class OrderPlacer {
 		button.addActionListener(new SendOrderListener(this));
 		toolbar.add(button);
 		
+		button = new JButton("Review orders");
+		button.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}});
+		toolbar.add(button);
+		
 		orderPanel = new OrderBuilder(inventory);
 		c.fill = GridBagConstraints.BOTH;
 		c.gridy = 1;
 		c.weighty = 1;
 		layout.add(orderPanel.getComponent(), c);
+		
 		
 		frame.pack();
 		frame.setSize(800,480);
