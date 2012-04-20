@@ -1,4 +1,3 @@
 To do list:
- * Serialise the amount discounted by a discount to increase forwards compatibility.
  * Add elements to till reviewer
  * Output (and serialise) receipt
