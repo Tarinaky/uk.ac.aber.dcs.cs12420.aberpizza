@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
@@ -73,7 +74,7 @@ public class TillReviewer {
 		pane.setLayout(new GridBagLayout() );
 		drawOrders();
 		
-		c.gridy = 1;
+		c.gridy++;
 		c.weighty = 1;
 		c.fill = GridBagConstraints.BOTH;
 		layout.add(new JScrollPane(pane),c);
@@ -87,6 +88,11 @@ public class TillReviewer {
 		c.gridy = 0;
 		c.weightx = 1;
 		c.weighty = 0;
+		
+		JLabel total = new JLabel("Total for day: £"+till.getTotalForDay() );
+		pane.add(total,c);
+		c.gridy++;
+		
 		
 		for (Order order : till.getOrders() ) {
 			c.gridx = 0;
