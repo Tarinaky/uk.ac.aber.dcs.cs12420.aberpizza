@@ -28,6 +28,7 @@ public class OrderPlacer {
 	private Till till;
 	private Inventory inventory;
 	private OrderBuilder orderPanel;
+	private JFrame frame = null;
 	
 	/**
 	 * Create, arrange and set visible the elements of the JFrame.
@@ -50,7 +51,7 @@ public class OrderPlacer {
 			System.exit(0);
 		}
 		
-		JFrame frame = new JFrame("Order Placer");
+		frame = new JFrame("Order Placer");
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.addWindowListener(new ExitListener(frame,till));
 		
@@ -87,9 +88,18 @@ public class OrderPlacer {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+				try {
+					till.save();
+					frame.dispose();
+					new TillReviewer(till);
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 				
-			}});
+		});
 		toolbar.add(button);
 		
 		orderPanel = new OrderBuilder(inventory);
@@ -111,7 +121,7 @@ public class OrderPlacer {
 	public OrderBuilder order() { return orderPanel; }
 	public Till getTill() { return till; }
 	
-	public static void main (String[] args) { OrderPlacer foo = new OrderPlacer(); }
+	public static void main (String[] args) { new OrderPlacer(); }
 	
 
 	
