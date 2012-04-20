@@ -24,6 +24,7 @@ public class SendOrderListener implements ActionListener {
 		java.math.BigDecimal total = view.order().getOrder().getSubtotal();
 
 		if (amountTendered.compareTo(total) >=0) {
+			view.order().getOrder().finalise();
 			view.getTill().addOrder(view.order().getOrder());
 			view.order().newOrder();
 

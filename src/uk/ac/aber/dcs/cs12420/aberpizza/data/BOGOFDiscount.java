@@ -16,9 +16,10 @@ public class BOGOFDiscount extends AbstractDiscount {
 	}
 
 	@Override
-	public BigDecimal getValue() {
+	public BigDecimal calculateValue() {
 		return item.getPrice();
 	}
+		
 
 	public void setItem(Item item) {
 		this.item = item;

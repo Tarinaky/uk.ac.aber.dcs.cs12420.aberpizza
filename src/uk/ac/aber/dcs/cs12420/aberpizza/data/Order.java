@@ -151,6 +151,12 @@ public class Order {
 		
 	}
 	
+	public void finalise() {
+		for (Discount discount : appliedDiscounts) {
+			discount.finalise();
+		}
+	}
+	
 	//TODO: Implement
 	public String getReceipt() {
 		return null;}

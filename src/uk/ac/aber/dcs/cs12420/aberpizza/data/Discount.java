@@ -11,5 +11,7 @@ public interface Discount {
 	
 	public BigDecimal getValue();
 	
+	public void finalise();
+	
 	
 }
