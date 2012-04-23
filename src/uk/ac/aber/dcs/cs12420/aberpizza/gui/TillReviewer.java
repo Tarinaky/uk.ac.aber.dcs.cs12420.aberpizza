@@ -10,8 +10,10 @@ import java.awt.event.WindowListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
@@ -23,6 +25,7 @@ public class TillReviewer {
 	private JFrame frame = null;
 	private Till till = null;
 	private JPanel pane = null;
+	private JScrollPane scrollPane = null;
 
 	public TillReviewer(Till till) {
 		this.till = till;
@@ -70,20 +73,39 @@ public class TillReviewer {
 		layout.add(toolbar, c);
 		
 		JButton button = new JButton("Open file...");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser chooser = new JFileChooser("data");
+				chooser.showOpenDialog(frame);
+				try {
+					Till till = Till.load(chooser.getSelectedFile());
+					new TillReviewer(till);
+					frame.dispose();
+				} catch (Exception e) {
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(frame,
+							"Could not open file as Till",
+							"Error",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		toolbar.add(button);
 		
 		pane = new JPanel();
 		pane.setLayout(new GridBagLayout() );
-		drawOrders();
-		
+				
 		c.gridy++;
 		c.weighty = 1;
 		c.fill = GridBagConstraints.BOTH;
-		layout.add(new JScrollPane(pane),c);
+		scrollPane = new JScrollPane(pane);
+		layout.add(scrollPane,c);
+		
+		drawOrders();
 		
 	}
 
 	private void drawOrders() {
+		pane.removeAll();
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
@@ -103,6 +125,7 @@ public class TillReviewer {
 			pane.add(button,c);
 			c.gridy++;
 		}
+		scrollPane.repaint();
 		
 	}
 	
