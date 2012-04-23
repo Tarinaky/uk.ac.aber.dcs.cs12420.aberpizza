@@ -24,11 +24,16 @@ public class SendOrderListener implements ActionListener {
 		java.math.BigDecimal total = view.order().getOrder().getSubtotal();
 
 		if (amountTendered.compareTo(total) >=0) {
+			//Save the amount discounted and finalise anything else.
 			view.order().getOrder().finalise();
+			//Add the order to the Till's log
 			view.getTill().addOrder(view.order().getOrder());
-			view.order().newOrder();
-
+			//Open the receipt for inspection
+			new ReceiptViewer(view.order().getOrder());
+			//Display the change to be tendered
 			JOptionPane.showMessageDialog(view.getComponent(),"Change: \u00A3"+amountTendered.subtract(total) );
+			//Clear the order builder for a new order.
+			view.order().newOrder();
 		} else {
 			JOptionPane.showMessageDialog(view.getComponent(),"Insuficient cash tendered.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
