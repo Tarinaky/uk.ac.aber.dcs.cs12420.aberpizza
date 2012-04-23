@@ -1,2 +1,10 @@
 To do list:
- * Open previous day's tills. 
+ * Javadoc
+ * Export as jar
+ * Writeup, discussion of changes
+ * Writeup, Tests
+ * Writeup, self-evaluation
+ * Feedback form
+ * submit
+ * ???
+ * Profit!
