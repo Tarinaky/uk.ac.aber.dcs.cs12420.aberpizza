@@ -28,6 +28,7 @@ public class Order {
 	private Date date = null;
 	private String customerName = null;
 	private Collection<Discount> appliedDiscounts = null;
+	private boolean finalised = false;
 	
 	/**
 	 * A map containing each row of the order
@@ -134,24 +135,37 @@ public class Order {
 	}
 	
 	public BigDecimal getDiscount() {
-		appliedDiscounts = new LinkedList<Discount>();
+		if (!isFinalised()) {
+			
+			appliedDiscounts = new LinkedList<Discount>();
 		
-		Collection<Discount> discounts = Inventory.singleton.getDiscounts();
-		BigDecimal discount = new BigDecimal(""+0);
-		for (Discount entry : discounts) {
-			discount = discount
-					.add(entry.getValue()
-					.multiply(new BigDecimal(""+entry.match(this) ) ) );
-			if(entry.match(this) > 0) {
-				appliedDiscounts.add(entry);
+			Collection<Discount> discounts = Inventory.singleton.getDiscounts();
+			BigDecimal discount = new BigDecimal(""+0);
+			for (Discount entry : discounts) {
+				discount = discount
+						.add(entry.getValue()
+								.multiply(new BigDecimal(""+entry.match(this) ) ) );
+				if(entry.match(this) > 0) {
+					appliedDiscounts.add(entry);
+				}
 			}
+			return discount;
+		} else {
+			BigDecimal discount = new BigDecimal(""+0);
+			for (Discount entry : appliedDiscounts) {
+				discount = discount
+						.add(entry.getValue()
+								.multiply(new BigDecimal(""+entry.match(this))));
+			}
+			return discount;
 		}
-		
-		return discount;
 		
 	}
 	
+	
+	
 	public void finalise() {
+		setFinalised(true);
 		for (Discount discount : appliedDiscounts) {
 			discount.finalise();
 			setDate(new Date() );
@@ -163,6 +177,9 @@ public class Order {
 		s.append("Order for "+getCustomerName()+"\n");
 		for (OrderItem entry : orderTable.values()) {
 			s.append("\t"+entry+"\n");
+		}
+		for (Discount entry : getAppliedDiscounts() ) {
+			s.append("\t"+entry+entry.getValue()+"\n");
 		}
 		s.append("Total: £"+getSubtotal()+"\n");
 		s.append("\n");
@@ -195,5 +212,13 @@ public class Order {
 
 	public void setOrderTable(Map<Item,OrderItem> orderTable) {
 		this.orderTable = orderTable;
+	}
+
+	public boolean isFinalised() {
+		return finalised;
+	}
+
+	public void setFinalised(boolean finalised) {
+		this.finalised = finalised;
 	}
 }
