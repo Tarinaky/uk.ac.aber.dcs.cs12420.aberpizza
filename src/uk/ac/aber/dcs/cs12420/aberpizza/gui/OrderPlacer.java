@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 import javax.swing.*;
+
 import java.awt.Component;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Inventory;
@@ -121,7 +122,24 @@ public class OrderPlacer {
 	public OrderBuilder order() { return orderPanel; }
 	public Till getTill() { return till; }
 	
-	public static void main (String[] args) { new OrderPlacer(); }
+	public static void main (String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		new OrderPlacer();
+	}
 	
 
 	

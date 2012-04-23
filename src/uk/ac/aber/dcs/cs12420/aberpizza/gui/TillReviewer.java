@@ -127,7 +127,7 @@ public class TillReviewer {
 			pane.add(button,c);
 			c.gridy++;
 		}
-		scrollPane.repaint();
+		//scrollPane.repaint();
 		
 	}
 	
