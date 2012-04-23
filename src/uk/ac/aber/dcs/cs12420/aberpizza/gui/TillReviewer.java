@@ -26,9 +26,11 @@ public class TillReviewer {
 	private Till till = null;
 	private JPanel pane = null;
 	private JScrollPane scrollPane = null;
+	private int numberOfOrders = 0;
 
 	public TillReviewer(Till till) {
 		this.till = till;
+		numberOfOrders = till.getOrders().size();
 		
 		frame = new JFrame("Review orders");
 		
@@ -105,7 +107,7 @@ public class TillReviewer {
 	}
 
 	private void drawOrders() {
-		pane.removeAll();
+		
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
@@ -113,7 +115,7 @@ public class TillReviewer {
 		c.weightx = 1;
 		c.weighty = 0;
 		
-		JLabel total = new JLabel("Total for day: £"+till.getTotalForDay() );
+		JLabel total = new JLabel("Total for day: £"+till.getTotalForDay()+", in "+numberOfOrders+" orders.");
 		pane.add(total,c);
 		c.gridy++;
 		
