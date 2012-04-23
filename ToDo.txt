@@ -1,2 +1,4 @@
 To do list:
- * Output (and serialise) receipt
+ * Change inventory, each pizza should have 3 sizes.
+ * Add custom pizza option.
+ * Open previous day's tills. 
