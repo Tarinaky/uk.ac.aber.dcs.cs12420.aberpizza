@@ -6,6 +6,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -128,6 +129,10 @@ public class Till {
 		
 		File path = new File("data", ""+niceDate(today)+".xml" );
 		
+		return load(path);
+	}
+	
+	public static Till load(File path) throws IOException {
 		XMLDecoder decoder = new XMLDecoder(
 				new BufferedInputStream(
 						new FileInputStream(path)));
