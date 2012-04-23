@@ -157,9 +157,16 @@ public class Order {
 		}
 	}
 	
-	//TODO: Implement
 	public String getReceipt() {
-		return null;}
+		StringBuffer s = new StringBuffer(""+Till.niceDate(date)+", AberPizza\n");
+		s.append("Order for "+getCustomerName()+"\n");
+		for (OrderItem entry : orderTable.values()) {
+			s.append("\t"+entry+"\n");
+		}
+		s.append("Total: "+getSubtotal()+"\n");
+		s.append("\n");
+		return s.toString();
+	}
 
 	/**
 	 * Produces the date that this order was originally constructed.
