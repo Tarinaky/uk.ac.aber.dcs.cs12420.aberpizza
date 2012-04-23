@@ -176,10 +176,10 @@ public class Order {
 		StringBuffer s = new StringBuffer(""+niceDate(date)+", AberPizza\n");
 		s.append("Order for "+getCustomerName()+"\n");
 		for (OrderItem entry : orderTable.values()) {
-			s.append("\t"+entry+"\n");
+			s.append("\t"+entry+": £"+entry.getOrderItemTotal()+"\n");
 		}
 		for (Discount entry : getAppliedDiscounts() ) {
-			s.append("\t"+entry+", -£"+entry.getValue()+"\n");
+			s.append("\t"+entry+", -£"+entry.getValue().multiply(new BigDecimal(entry.match(this)))+"\n");
 		}
 		s.append("Total: £"+getSubtotal()+"\n");
 		s.append("\n");
