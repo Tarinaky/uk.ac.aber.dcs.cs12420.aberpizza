@@ -154,6 +154,7 @@ public class Order {
 	public void finalise() {
 		for (Discount discount : appliedDiscounts) {
 			discount.finalise();
+			setDate(new Date() );
 		}
 	}
 	
@@ -169,9 +170,10 @@ public class Order {
 	}
 
 	/**
-	 * Produces the date that this order was originally constructed.
+	 * If not finalised, produces the time that this order was originally constructed.
+	 * When the order is finalised it produces the time finalise was called. 
 	 * 
-	 * @return A Date object referring to the time, in milliseconds, that this object was instantiated.
+	 * @return A Date object referring to the time.
 	 */
 	public Date getDate() {
 		return date;
