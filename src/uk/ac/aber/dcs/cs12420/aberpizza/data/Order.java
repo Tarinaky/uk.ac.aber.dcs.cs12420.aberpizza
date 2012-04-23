@@ -179,7 +179,7 @@ public class Order {
 			s.append("\t"+entry+"\n");
 		}
 		for (Discount entry : getAppliedDiscounts() ) {
-			s.append("\t"+entry+entry.getValue()+"\n");
+			s.append("\t"+entry+", -£"+entry.getValue()+"\n");
 		}
 		s.append("Total: £"+getSubtotal()+"\n");
 		s.append("\n");
