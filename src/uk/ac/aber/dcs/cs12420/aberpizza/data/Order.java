@@ -163,7 +163,7 @@ public class Order {
 		for (OrderItem entry : orderTable.values()) {
 			s.append("\t"+entry+"\n");
 		}
-		s.append("Total: "+getSubtotal()+"\n");
+		s.append("Total: £"+getSubtotal()+"\n");
 		s.append("\n");
 		return s.toString();
 	}
