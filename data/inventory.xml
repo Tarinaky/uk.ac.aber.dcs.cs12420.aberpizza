@@ -132,6 +132,45 @@
    <void method="add"> 
     <object idref="SideItem0"/> 
    </void> 
+   <void method="add"> 
+    <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.PizzaItem"> 
+     <void property="description"> 
+      <string>Pepperoni</string> 
+     </void> 
+     <void property="size"> 
+      <double>14.0</double> 
+     </void> 
+     <void property="stringPrice"> 
+      <string>14.99</string> 
+     </void> 
+     <void property="toppings"> 
+      <void method="add"> 
+       <string>Pepperoni</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="uk.ac.aber.dcs.cs12420.aberpizza.data.PizzaItem"> 
+     <void property="description"> 
+      <string>Meat Feast</string> 
+     </void> 
+     <void property="size"> 
+      <double>14.0</double> 
+     </void> 
+     <void property="stringPrice"> 
+      <string>14.99</string> 
+     </void> 
+     <void property="toppings"> 
+      <void method="add"> 
+       <string>Ham</string> 
+      </void> 
+      <void method="add"> 
+       <string>Pepperoni</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
   </void> 
  </object> 
 </java> 
