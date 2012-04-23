@@ -159,13 +159,19 @@ public class Order {
 	}
 	
 	public String getReceipt() {
-		StringBuffer s = new StringBuffer(""+Till.niceDate(date)+", AberPizza\n");
+		StringBuffer s = new StringBuffer(""+niceDate(date)+", AberPizza\n");
 		s.append("Order for "+getCustomerName()+"\n");
 		for (OrderItem entry : orderTable.values()) {
 			s.append("\t"+entry+"\n");
 		}
 		s.append("Total: £"+getSubtotal()+"\n");
 		s.append("\n");
+		return s.toString();
+	}
+
+	private String niceDate(Date date) {
+		StringBuffer s = new StringBuffer(Till.niceDate(date));
+		s.append(" @ "+date.getHours()+":"+date.getMinutes());
 		return s.toString();
 	}
 
