@@ -169,7 +169,7 @@ public class Order {
 		return s.toString();
 	}
 
-	private String niceDate(Date date) {
+	public static String niceDate(Date date) {
 		StringBuffer s = new StringBuffer(Till.niceDate(date));
 		s.append(" @ "+date.getHours()+":"+date.getMinutes());
 		return s.toString();

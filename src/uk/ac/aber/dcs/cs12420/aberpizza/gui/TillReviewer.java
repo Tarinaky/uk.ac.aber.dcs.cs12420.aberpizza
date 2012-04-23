@@ -98,7 +98,7 @@ public class TillReviewer {
 		
 		for (Order order : till.getOrders() ) {
 			c.gridx = 0;
-			JButton button = new JButton(""+order.getCustomerName()+", £"+order.getSubtotal() );
+			JButton button = new JButton(""+Order.niceDate(order.getDate())+", "+order.getCustomerName()+", £"+order.getSubtotal() );
 			button.addActionListener(new ReceiptOpenner(order));
 			pane.add(button,c);
 			c.gridy++;
