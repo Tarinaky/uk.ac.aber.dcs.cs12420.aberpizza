@@ -1,7 +1,5 @@
 To do list:
- * Make inventory be loaded as a resource (so it can be jar'd)
  * Javadoc
- * Export as jar
  * Writeup, discussion of changes
  * Writeup, Tests
  * Writeup, self-evaluation

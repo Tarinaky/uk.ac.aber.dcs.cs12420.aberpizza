@@ -57,16 +57,15 @@ public class Inventory {
 			filename = "inventory.xml";
 		}
 		
-		URL url = new URL ("jar://data/"+filename);
+		URL url = Inventory.class.getClassLoader().getResource("data/"+filename);
 		XMLDecoder decoder;
-		
-		try {
+		if (url != null) {
 			decoder = new XMLDecoder(
 					new BufferedInputStream(
 						url.openStream() ));
-		} catch (java.io.FileNotFoundException e) {
-			e.printStackTrace();
-			System.out.println("Resource file not found in jar, trying filesystem.");
+		} else {
+			//e.printStackTrace();
+			System.out.println("Could not open 'data/"+filename+"' from jar, trying filesystem.");
 			File path = new File("data", filename);
 			decoder = new XMLDecoder(
 					new BufferedInputStream(
