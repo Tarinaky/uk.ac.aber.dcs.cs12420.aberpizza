@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.cs12420.aberpizza.data;
 
 import java.beans.*;
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 
 /**
@@ -56,11 +57,22 @@ public class Inventory {
 			filename = "inventory.xml";
 		}
 		
-		File path = new File ("data", filename);
+		URL url = new URL ("jar://data/"+filename);
+		XMLDecoder decoder;
 		
-		XMLDecoder decoder = new XMLDecoder(
-				new BufferedInputStream(
-						new FileInputStream(path)));
+		try {
+			decoder = new XMLDecoder(
+					new BufferedInputStream(
+						url.openStream() ));
+		} catch (java.io.FileNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("Resource file not found in jar, trying filesystem.");
+			File path = new File("data", filename);
+			decoder = new XMLDecoder(
+					new BufferedInputStream(
+							new FileInputStream(path)));
+		}
+		
 		//Inventory inventory = (Inventory)decoder.readObject();
 		Inventory inventory = (Inventory) decoder.readObject();
 		decoder.close();
