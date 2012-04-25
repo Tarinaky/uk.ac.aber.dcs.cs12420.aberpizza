@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
+/** Increases the quantity of an item by one. */
 public class PlusOneListener implements ActionListener {
 
 	private OrderBuilder builder = null;

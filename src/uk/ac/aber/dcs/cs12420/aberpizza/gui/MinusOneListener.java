@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
+/**
+ * Reduces the quantity of an item by one.
+ * @author Tarinaky
+ *
+ */
 public class MinusOneListener implements ActionListener {
 
 	private OrderBuilder builder = null;

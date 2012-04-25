@@ -5,6 +5,7 @@ import javax.swing.JTextArea;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Order;
 
+/** Displays an order's receipt as a JTextArea. */
 public class ReceiptViewer {
 	private JFrame frame = null;
 	

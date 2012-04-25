@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Finalises an order, sending it to the Till's log.
+ * @author Tarinaky
+ *
+ */
 public class SendOrderListener implements ActionListener {
 
 	private OrderPlacer view = null;

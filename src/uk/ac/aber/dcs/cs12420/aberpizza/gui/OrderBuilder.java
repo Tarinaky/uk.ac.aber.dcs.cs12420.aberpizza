@@ -15,9 +15,16 @@ import javax.swing.JSplitPane;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
-
+/**
+ * A pair of panels, the left describing an order under construction and the right displaying
+ * inventory items that can be added to that order.
+ * @author Tarinaky
+ *
+ */
 public class OrderBuilder {
+	/** The order under construction */
 	private Order order = null;
+	/** A handle to the inventory used to populate the right hand panel. */
 	private Inventory inventory = null;
 	private JSplitPane panel = null;
 	private JPanel right,left;
@@ -32,7 +39,9 @@ public class OrderBuilder {
 		newOrder();
 		
 	}
-	
+	/**
+	 * Draws the order under construction in {@link #left}.
+	 */
 	public void drawOrder() {
 		left = new JPanel(new GridBagLayout() );
 		panel.setLeftComponent(left);
@@ -89,7 +98,10 @@ public class OrderBuilder {
 		c.gridx = 1;
 		left.add(new JLabel(""+order.getSubtotal()), c);
 	}
-	
+	/**
+	 * Allows the Inventory to be split into three tabs: Pizza, Drinks and Sides.
+	 * This resets the right hand panel.
+	 */
 	public void resetButtons() {
 		right = new JPanel(new GridBagLayout() );
 		panel.setRightComponent(right);
@@ -111,7 +123,9 @@ public class OrderBuilder {
 		button.addActionListener(new ShowSidesListener(this));
 		right.add(button,c);
 	}
-	
+	/**
+	 * Show only pizza items in {@link #right}.
+	 */
 	public void showPizza() {
 		resetButtons();
 		
@@ -130,7 +144,9 @@ public class OrderBuilder {
 		right.repaint();
 		
 	}
-	
+	/**
+	 * Show only drink items in {@link #right}.
+	 */
 	public void showDrinks() {
 		resetButtons();
 		
@@ -149,7 +165,9 @@ public class OrderBuilder {
 		right.repaint();
 		
 	}
-	
+	/**
+	 * Show only side orders in {@link right}.
+	 */
 	public void showSides() {
 		resetButtons();
 		
@@ -168,7 +186,14 @@ public class OrderBuilder {
 		right.repaint();
 		
 	}
-	
+	/**
+	 * Packs the {@link Item}s in the {@link Inventory} into {@link ItemGroupButton}s.
+	 * If an ItemGroupButton for a given item exists, it is placed within it - else a new
+	 * group is created to hold it.
+	 * @param item
+	 * @param groups
+	 * @param c
+	 */
 	public void makeButton(Item item, LinkedList<ItemGroupButton> groups, 
 			GridBagConstraints c) {
 		
@@ -201,17 +226,17 @@ public class OrderBuilder {
 			group.add(item);//Pack the matched item into the right group.
 		}
 	}
-	
+	/** @see #panel */
 	public Component getComponent() {
 		return panel;
 	}
-	
+	/** @see #order */
 	public void newOrder () {
 		order = new Order();
 		showPizza();
 		drawOrder();
 	}
-	
+	/** @see #order */
 	public Order getOrder() {
 		return order;
 	}

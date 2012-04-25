@@ -8,6 +8,12 @@ import javax.swing.JFrame;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Till;
 
+/**
+ * When a Till is closed it should automatically serialise all data to disk. This
+ * WindowListener attempts just that.
+ * @author Tarinaky
+ *
+ */
 public class ExitListener implements WindowListener {
 
 	private JFrame frame;

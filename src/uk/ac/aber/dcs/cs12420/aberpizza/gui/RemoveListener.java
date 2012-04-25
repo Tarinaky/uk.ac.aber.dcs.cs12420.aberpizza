@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
+/** Removes an item from an order. */
 public class RemoveListener implements ActionListener {
 
 	private OrderBuilder builder = null;

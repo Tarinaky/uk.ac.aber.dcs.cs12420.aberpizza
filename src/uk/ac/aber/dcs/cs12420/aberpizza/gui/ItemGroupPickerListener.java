@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
+/**
+ * This ActionListener adds the selected size of {@link Item} to the {@link Order}.
+ * @author Tarinaky
+ *
+ */
 public class ItemGroupPickerListener implements ActionListener {
 
 	private Order order = null;

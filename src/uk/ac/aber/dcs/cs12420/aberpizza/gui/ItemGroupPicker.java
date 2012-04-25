@@ -9,6 +9,11 @@ import javax.swing.JDialog;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
+/**
+ * This is the dialog asking the user which size of an item they want added to the order.
+ * @author Tarinaky
+ *
+ */
 @SuppressWarnings("serial")
 public class ItemGroupPicker extends JDialog {
 	

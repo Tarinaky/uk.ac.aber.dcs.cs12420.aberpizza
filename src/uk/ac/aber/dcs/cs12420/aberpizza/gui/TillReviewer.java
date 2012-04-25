@@ -21,6 +21,12 @@ import javax.swing.JToolBar;
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Order;
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Till;
 
+/**
+ * Presents a list of all orders stored in this Till's log. Each order can be clicked on to
+ * open its receipt.
+ * @author Tarinaky
+ *
+ */
 public class TillReviewer {
 	private JFrame frame = null;
 	private Till till = null;

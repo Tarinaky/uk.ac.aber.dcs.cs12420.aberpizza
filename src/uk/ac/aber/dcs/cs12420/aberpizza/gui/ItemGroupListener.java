@@ -5,6 +5,12 @@ import java.awt.event.ActionListener;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
+/**
+ * This ActionListener creates a pop up dialog asking the user which size of item
+ * they wish to add. If the ItemGroupButton contains only one item then no dialog is presented.
+ * @author Tarinaky
+ *
+ */
 public class ItemGroupListener implements ActionListener {
 	
 	private Order order = null;

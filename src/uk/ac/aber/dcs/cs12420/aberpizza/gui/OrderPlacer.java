@@ -26,8 +26,11 @@ public class OrderPlacer {
 	/**
 	 * Handle to the model that this view inserts orders into.
 	 */
+	/** The currently open Till. */
 	private Till till;
+	/** The inventory of items for sale, and discounts to be applied. */
 	private Inventory inventory;
+	/** The GUI representation of the Order currently being built */
 	private OrderBuilder orderPanel;
 	private JFrame frame = null;
 	
@@ -115,13 +118,19 @@ public class OrderPlacer {
 		frame.setVisible(true);
 	}
 
+	/** Returns the {@link #orderPanel}'s swing component. */
 	public Component getComponent() {
 		return orderPanel.getComponent();
 	}
-	
+	/** @see orderPanel */
 	public OrderBuilder order() { return orderPanel; }
+	/** @see till */
 	public Till getTill() { return till; }
 	
+	/**
+	 * Entry point into the AberPizza program. It creates an {@link OrderPlacer}.
+	 * @param args
+	 */
 	public static void main (String[] args) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
