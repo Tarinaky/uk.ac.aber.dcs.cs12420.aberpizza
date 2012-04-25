@@ -1,5 +1,4 @@
 To do list:
- * Javadoc
  * Writeup, discussion of changes
  * Writeup, Tests
  * Writeup, self-evaluation
