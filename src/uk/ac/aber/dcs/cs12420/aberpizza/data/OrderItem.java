@@ -34,10 +34,11 @@ public class OrderItem {
 		this.setItem(item); 
 	}
 	
+	/** XMLEncoder requires a default constructor. */
 	public OrderItem() {
 		
 	}
-	
+	/** @see #item */
 	public Item getItem() { return item; }
 	
 	/**
@@ -59,11 +60,12 @@ public class OrderItem {
 	public BigDecimal getOrderItemTotal() {
 		return getItem().getPrice().multiply(new BigDecimal(getQuantity()) );
 	}
-
+	
+	/** @see #item */
 	public void setItem(Item item) {
 		this.item = item;
 	}
-
+	/** @see #quantity */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
