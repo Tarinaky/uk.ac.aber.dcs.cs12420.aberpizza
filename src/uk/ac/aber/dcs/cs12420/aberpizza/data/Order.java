@@ -154,8 +154,7 @@ public class Order {
 			BigDecimal discount = new BigDecimal(""+0);
 			for (Discount entry : appliedDiscounts) {
 				discount = discount
-						.add(entry.getValue()
-								.multiply(new BigDecimal(""+entry.match(this))));
+						.add(entry.getValue());
 			}
 			return discount;
 		}
@@ -167,7 +166,7 @@ public class Order {
 	public void finalise() {
 		setFinalised(true);
 		for (Discount discount : appliedDiscounts) {
-			discount.finalise();
+			discount.finalise(this);
 			setDate(new Date() );
 		}
 	}
