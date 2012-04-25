@@ -16,12 +16,16 @@ public abstract class AbstractDiscount implements Discount {
 	 */
 	private BigDecimal savedValue = null;
 	/**
-	 * Is set true when the discount is finalised
+	 * Is set true when the discount is finalised.
 	 */
 	private boolean finalised = false;
 
 	public String toString() { return getDescription(); }
 	
+	/** Saves the total worth of this discount.
+	 * 
+	 * @param value A BigDecimal, with the value in pounds, to be deducted from the order this discount is associated with.
+	 */
 	protected void setValue(BigDecimal value) {
 		savedValue = value;
 	}
@@ -52,5 +56,13 @@ public abstract class AbstractDiscount implements Discount {
 	public void setFinalised(boolean finalised) {
 		this.finalised = finalised;
 	}
-
+	
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new InternalError(e.toString());
+		}
+	}
+	
 }

@@ -146,7 +146,7 @@ public class Order {
 						.add(entry.getValue()
 								.multiply(new BigDecimal(""+entry.match(this) ) ) );
 				if(entry.match(this) > 0) {
-					appliedDiscounts.add(entry);
+					appliedDiscounts.add((Discount) entry.clone());
 				}
 			}
 			return discount;
