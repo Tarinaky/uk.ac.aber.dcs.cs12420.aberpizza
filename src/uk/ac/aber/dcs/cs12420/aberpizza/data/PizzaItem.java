@@ -2,8 +2,15 @@ package uk.ac.aber.dcs.cs12420.aberpizza.data;
 
 import java.util.*;
 
+/**
+ * Specialisation representing a pizza.
+ * @author Tarinaky
+ *
+ */
 public class PizzaItem extends AbstractItem {
-	
+	/**
+	 * A collection describing the toppings and components of this pizza.
+	 */
 	private Collection<String> toppings = null;
 	
 	public PizzaItem() {
@@ -11,8 +18,9 @@ public class PizzaItem extends AbstractItem {
 		toppings = new LinkedList<String>();
 		
 	}
-	
+	/** @see #toppings */
 	public Collection<String> getToppings() { return toppings; }
+	/** @see #toppings */
 	public void setToppings(Collection<String> s) { toppings = s; }
 		
 	@Override
