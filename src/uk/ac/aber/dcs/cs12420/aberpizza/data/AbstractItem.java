@@ -20,7 +20,7 @@ public abstract class AbstractItem implements Item {
 	/**
 	 * The 'size' of the item. The format of this field depends on extensions to this class,
 	 * and Items with no meaningful size data (or where there is only one size available) can
-	 * safely ignore this value.
+	 * safely ignore this field.
 	 */
 	private double size = 1;
 		
