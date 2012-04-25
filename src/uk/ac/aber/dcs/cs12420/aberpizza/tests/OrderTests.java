@@ -16,6 +16,9 @@ public class OrderTests extends TestCase {
 		fixture = new Order();
 	}
 	
+	/**
+	 * Tests customerName getter and setter.
+	 */
 	@Test
 	public void testCustomerName() {
 		fixture.setCustomerName("Test string");
@@ -23,6 +26,9 @@ public class OrderTests extends TestCase {
 				fixture.getCustomerName() == "Test string");
 	}
 	
+	/**
+	 * Tests that an item can be removed.
+	 */
 	@Test
 	public void testRemoveItems() {
 		TestItem item = new TestItem();

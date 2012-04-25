@@ -10,6 +10,11 @@ import uk.ac.aber.dcs.cs12420.aberpizza.data.Order;
 import uk.ac.aber.dcs.cs12420.aberpizza.data.Till;
 import junit.framework.TestCase;
 
+/**
+ * 
+ * @author Tarinaky
+ *
+ */
 public class TillTests extends TestCase {
 	private Till fixture = null;
 	
@@ -17,7 +22,9 @@ public class TillTests extends TestCase {
 	public void setUp() {
 		fixture = new Till();
 	}
-	
+	/**
+	 * Verifies that orders can be added to tills.
+	 */
 	@Test
 	public void testAddOrder() {
 		Order testOrder = new Order();
@@ -32,7 +39,10 @@ public class TillTests extends TestCase {
 
 		
 	}
-	
+	/**
+	 * Verifies serialisation and deserialisation.
+	 * @throws IOException
+	 */
 	@Test
 	public void testSerialisation() throws IOException {
 		Order testOrder = new Order();

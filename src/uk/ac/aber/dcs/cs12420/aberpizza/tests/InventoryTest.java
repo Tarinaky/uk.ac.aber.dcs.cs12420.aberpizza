@@ -12,6 +12,9 @@ public class InventoryTest extends TestCase {
 	private Inventory fixture = null;
 	private Item testItem = null;
 	
+	/**
+	 * Populates a sample inventory with a single item.
+	 */
 	@Before
 	public void setUp() {
 		fixture = new Inventory();
@@ -19,6 +22,9 @@ public class InventoryTest extends TestCase {
 		fixture.getItems().add(testItem);
 	}
 	
+	/**
+	 * Verifies the integrity of the test inventory.
+	 */
 	@Test
 	public void testItem() {
 		
@@ -26,6 +32,9 @@ public class InventoryTest extends TestCase {
 				fixture.getItems().contains(testItem) );
 	}
 	
+	/**
+	 * Verifies that serialisation, and deserialisation, works.
+	 */
 	@Test
 	public void testSerialisation() {
 		Inventory loaded = null;

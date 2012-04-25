@@ -6,6 +6,14 @@ import java.util.LinkedList;
 
 import uk.ac.aber.dcs.cs12420.aberpizza.data.*;
 
+/**
+ * This class is not used by any other code. It is written as a small procedural
+ * pipeline tool to assist me in populating data/Inventory.xml. The task performed is not
+ * mentioned by the Use Case specification, is not part of the Solution, and is included for
+ * completeness only.
+ * @author Tarinaky
+ *
+ */
 public class InventoryEditor {
 
 	private enum State { EXIT, START, NEW, LOAD, SAVE, EDITOR, QUIT,
