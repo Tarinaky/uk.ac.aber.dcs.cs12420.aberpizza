@@ -178,7 +178,7 @@ public class Order {
 			s.append("\t"+entry+": £"+entry.getOrderItemTotal()+"\n");
 		}
 		for (Discount entry : getAppliedDiscounts() ) {
-			s.append("\t"+entry+", -£"+entry.getValue().multiply(new BigDecimal(entry.match(this)))+"\n");
+		s.append("\t"+entry+", -£"+entry.getValue()+"\n");
 		}
 		s.append("Total: £"+getSubtotal()+"\n");
 		s.append("\n");

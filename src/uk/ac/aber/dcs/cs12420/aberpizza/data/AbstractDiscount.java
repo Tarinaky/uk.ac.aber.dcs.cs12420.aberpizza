@@ -10,10 +10,14 @@ import java.math.BigDecimal;
  *
  */
 public abstract class AbstractDiscount implements Discount {
-	/** Stores the per-match value of the discount when serialised.
-	 * This is used to allow for this value to be serialised - reducing the source dependancy. 
+	/** Stores the value of the discount when serialised.
+	 * This is used to allow for this value to be serialised - removing 
+	 * source-code dependence on the implementation. 
 	 */
 	private BigDecimal savedValue = null;
+	/**
+	 * Is set true when the discount is finalised
+	 */
 	private boolean finalised = false;
 
 	public String toString() { return getDescription(); }
@@ -23,21 +27,30 @@ public abstract class AbstractDiscount implements Discount {
 	}
 	
 	public BigDecimal getValue() {
-		if (finalised == false) {
+		if (isFinalised() == false) {
 			return calculateValue();
 		} else {
 			return savedValue;
 		}
 	}
 	
+	
 	public void finalise(Order order) {
 		setValue(getValue().multiply(new BigDecimal(match(order))));
-		finalised = order.isFinalised();
+		setFinalised(order.isFinalised());
 	}
 	
 	public abstract BigDecimal calculateValue();
 	
 	public String getStringValue() { return ""+savedValue; }
 	public void setStringValue(String s) { savedValue = new BigDecimal(s); }
+
+	public boolean isFinalised() {
+		return finalised;
+	}
+
+	public void setFinalised(boolean finalised) {
+		this.finalised = finalised;
+	}
 
 }
