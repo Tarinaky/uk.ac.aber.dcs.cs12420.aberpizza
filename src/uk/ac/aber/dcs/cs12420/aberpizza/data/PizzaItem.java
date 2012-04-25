@@ -10,6 +10,8 @@ import java.util.*;
 public class PizzaItem extends AbstractItem {
 	/**
 	 * A collection describing the toppings and components of this pizza.
+	 * 
+	 * The {@link AbstractItem#size} of a pizza is in inches of diameter.
 	 */
 	private Collection<String> toppings = null;
 	

@@ -47,11 +47,11 @@ public class Till {
 		}
 		return s;
 	}
-	
+	/** @see orders */
 	public void setOrders(LinkedList<Order> orders) {
 		this.orders = orders;
 	}
-	
+	/** @see orders */
 	public LinkedList<Order> getOrders() {
 		return orders;
 	}
@@ -102,7 +102,13 @@ public class Till {
 		
 		return total;
 	}
-	
+	/**
+	 * Serialise this Till's log to disk.
+	 * <p>
+	 * The data directory in the current working directory is used to store Till logs,
+	 * the name of each log is generated automatically from today's date.
+	 * @throws IOException
+	 */
 	public void save() throws IOException {
 		File path = new File ("data");
 		
@@ -122,7 +128,11 @@ public class Till {
 		encoder.close();
 		
 	}
-	
+	/**
+	 * Attempts to load today's log from the data folder in the current working directory.
+	 * @return The deserialised Till object.
+	 * @throws IOException
+	 */
 	public static Till load() throws IOException {
 		final long milisInADay = 24 * 60 * 60 * 1000;
 		Date today = new Date((new Date().getTime()/milisInADay)*milisInADay);
@@ -131,7 +141,12 @@ public class Till {
 		
 		return load(path);
 	}
-	
+	/**
+	 * Attempts to load an arbitrary log.
+	 * @param path The path to the Till file to be loaded.
+	 * @return The deserialised Till object.
+	 * @throws IOException
+	 */
 	public static Till load(File path) throws IOException {
 		XMLDecoder decoder = new XMLDecoder(
 				new BufferedInputStream(
@@ -141,6 +156,11 @@ public class Till {
 		return till;
 	}
 	
+	/** A utility function for producing formatted dates.
+	 * 
+	 * @param date The date to format.
+	 * @return A date in the format "YYYY-MM-DD".
+	 */
 	public static String niceDate(Date date) {
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
