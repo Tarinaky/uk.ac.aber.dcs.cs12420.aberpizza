@@ -22,12 +22,24 @@ public class Order {
 	
 	/**
 	 * The date the order was created. This is automatically generated
-	 * when the order is constructed to match today's date. This field
+	 * when the order is constructed, and automatically updated when the order is finalised
+	 * to match today's date. This field
 	 * is used to sort and filter the orders when they are complete and stored.
 	 */
 	private Date date = null;
+	/**
+	 * The name of the customer, as required by the specification.
+	 */
 	private String customerName = null;
+	/**
+	 * A list of copied discount objects, used to store the discounts that
+	 * applied to this order at the point of sale.
+	 */
 	private Collection<Discount> appliedDiscounts = null;
+	/**
+	 * This value is true if the order is finalised. This should be set true before finalising
+	 * the order's components.
+	 */
 	private boolean finalised = false;
 	
 	/**
@@ -56,10 +68,11 @@ public class Order {
 		return s;
 	}
 	
+	/** @see #customerName */
 	public void setCustomerName(String name) {
 		this.customerName = name;
 	}
-	
+	/** @see #customerName */
 	public String getCustomerName() {
 		return customerName;
 	}
@@ -104,20 +117,30 @@ public class Order {
 		addItem(item,quantity);
 	}
 	
+	/**
+	 * 
+	 * @return All the Item entries that make up an order.
+	 */
 	public Collection<OrderItem> getEntries() {
 		return getOrderTable().values();
 	}
-	
+	/**
+	 * @see #appliedDiscounts
+	 * @return All the discounts that apply to this order.
+	 */
 	public Collection<Discount> getAppliedDiscounts() {
 		return appliedDiscounts;
 	}
-	
+	/**
+	 * Allows deserialisation of {@link #appliedDiscounts}
+	 * @param appliedDiscounts The discounts applied to this item.
+	 */
 	public void setAppliedDiscounts(Collection<Discount> appliedDiscounts) {
 		this.appliedDiscounts = appliedDiscounts;
 	}
 	
 	/**
-	 * Return the subtotal (before discounts) of this order.
+	 * Return the subtotal (including discounts) of this order.
 	 * <p>
 	 * This is calculated by iterating through each row of orderTable and
 	 * obtaining the price associated with that row.
@@ -134,6 +157,11 @@ public class Order {
 		return subtotal.subtract(getDiscount() );
 	}
 	
+	/**
+	 * If not {@link #finalised}, it checks each discount active in the inventory and, if it applies to this
+	 * order, adds it to {@link #appliedDiscounts}. 
+	 * @return The total discount applicable to this order.
+	 */
 	public BigDecimal getDiscount() {
 		if (!isFinalised()) {
 			
@@ -162,7 +190,9 @@ public class Order {
 	}
 	
 	
-	
+	/**
+	 * Finalises this order and its children.
+	 */
 	public void finalise() {
 		setFinalised(true);
 		for (Discount discount : appliedDiscounts) {
@@ -171,6 +201,9 @@ public class Order {
 		}
 	}
 	
+	/**
+	 * @return A multi-line receipt. 
+	 */
 	public String getReceipt() {
 		StringBuffer s = new StringBuffer(""+niceDate(date)+", AberPizza\n");
 		s.append("Order for "+getCustomerName()+"\n");
@@ -185,6 +218,11 @@ public class Order {
 		return s.toString();
 	}
 
+	/**
+	 * Utility function, not necissarily applicable only to Order.
+	 * @param date The date to format.
+	 * @return A date in the form 'YYYY-MM-DD @ HH:MM'.
+	 */
 	public static String niceDate(Date date) {
 		StringBuffer s = new StringBuffer(Till.niceDate(date));
 		s.append(" @ "+date.getHours()+":"+date.getMinutes());
@@ -200,23 +238,24 @@ public class Order {
 	public Date getDate() {
 		return date;
 	}
-
+	/** @see #date */
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	/** @see #orderTable */
 	public Map<Item,OrderItem> getOrderTable() {
 		return orderTable;
 	}
-
+	/** @see #orderTable */
 	public void setOrderTable(Map<Item,OrderItem> orderTable) {
 		this.orderTable = orderTable;
 	}
-
+	/** @see #finalised */
 	public boolean isFinalised() {
 		return finalised;
 	}
-
+	/** @see #finalised */
 	public void setFinalised(boolean finalised) {
 		this.finalised = finalised;
 	}
