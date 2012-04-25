@@ -30,6 +30,10 @@ public abstract class AbstractDiscount implements Discount {
 		savedValue = value;
 	}
 	
+	/**
+	 * If this discount is finalised, it returns the total value of the discount;
+	 * else it returns the per-match value of this discount.
+	 */
 	public BigDecimal getValue() {
 		if (isFinalised() == false) {
 			return calculateValue();
@@ -38,25 +42,58 @@ public abstract class AbstractDiscount implements Discount {
 		}
 	}
 	
-	
+	/**
+	 * Finalise this discount.
+	 * @param order The order this discount is to be included within. This order must have its
+	 * finalised flag set true or behavior is undefined.
+	 */
 	public void finalise(Order order) {
 		setValue(getValue().multiply(new BigDecimal(match(order))));
 		setFinalised(order.isFinalised());
 	}
 	
+	/**
+	 * Calculates the per-match value of this discount.
+	 * @return The value to be multiplied by the number of matches.
+	 */
 	public abstract BigDecimal calculateValue();
 	
+	/**
+	 * XMLEncoder requires a default constructor for all serialised elements.
+	 * BigDecimal does not support a default constructor so getStringValue is used to
+	 * return a string representation of the BigDecimal value.
+	 * @return The saved value of this finalised discount, as a string.
+	 * @see #setStringValue
+	 */
 	public String getStringValue() { return ""+savedValue; }
+	/**
+	 * XMLEncoder requires a default constructor for all serialised elements.
+	 * BigDecimal does not support a default constructor so setStringValue is used to
+	 * set a string representation of the BigDecimal value.
+	 * @param s The saved value of this finalised discount, as a string.
+	 * @see #getStringValue
+	 */
 	public void setStringValue(String s) { savedValue = new BigDecimal(s); }
 
+	/**
+	 * @return True if this discount is finalised and calculateValue/match should not be used.
+	 */
 	public boolean isFinalised() {
 		return finalised;
 	}
-
+	/**
+	 * 
+	 * @param finalised True if this discount is finalised and calculateValue/match should no longer be used.
+	 */
 	public void setFinalised(boolean finalised) {
 		this.finalised = finalised;
 	}
 	
+	/**
+	 * Each order should have its own copy of a given discount, with which it can save the
+	 * value and other data of that discount at the time the discount was created. This override
+	 * allows for the creation of shallow copies of discount objects.
+	 */
 	public Object clone() {
 		try {
 			return super.clone();
