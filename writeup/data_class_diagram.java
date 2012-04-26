@@ -90,6 +90,20 @@ class Order{
 }
 
 /** @opt hide */class Map<Item,OrderItem> {}
-class OrderItem {}
+/**
+ * @opt all
+ * @composed 1 - 1 Item
+ */
+class OrderItem {
+	private Item item;
+	private int quantity;
+	public OrderItem();
+	public OrderItem(Item item, int quantity);
+	public int getItem();
+	public BigDecimal getOrderItemTotal();
+	public int getQuantity();
+	public void setItem(Item item);
+	public void setQuantity(int quantity);	
+}
 /** @opt hide */class Collection<Discount>{}
 /** @opt hide */class Date {}
