@@ -22,8 +22,8 @@ interface Item {
 }
 /**
  * @opt all
- * @assoc 1 - * Item
- * @assoc 1 - * Discount
+ * @composed 1 - * Item
+ * @composed 1 - * Discount
  * @author Tarinaky
  *
  */
@@ -43,5 +43,41 @@ class Inventory {
 class ArrayList<Discount> {}
 /** @opt hide */
 class ArrayList<Item> {}
-
-interface Discount {}
+/**
+ * @opt all
+ * @author Tarinaky
+ *
+ */
+interface Discount {
+	public Object clone();
+	public void finalise(Order o);
+	public String getDescription();
+	public BigDecimal getValue();
+	public int match(Order o);
+}
+/**
+ * @opt all
+ * @composed 1 - * OrderItem
+ * @composed 1 - * Discount
+ * @author Tarinaky
+ *
+ */
+class Order{
+	private Collection<Discount> appliedDiscounts;
+	private String customerName;
+	private Date date;
+	private boolean finalised;
+	private Map<Item,OrderItem> orderTable;
+	
+	public void addItem(Item item, int quantity);
+	public void finalise();
+	public Collection<Discount> getAppliedDiscounts();
+	public String getCustomerName();
+	public Date getDate();
+	public BigDecimal getDiscount();
+	public Collection<OrderItem> getEntries();
+	public Map<Item,OrderItem> getOrderTable();
+	public String getReceipt();
+	public BigDecimal getSubtotal();
+	public boolean isFinalised();
+}
