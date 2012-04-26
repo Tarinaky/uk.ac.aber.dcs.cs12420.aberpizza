@@ -107,3 +107,15 @@ class OrderItem {
 }
 /** @opt hide */class Collection<Discount>{}
 /** @opt hide */class Date {}
+
+class PizzaItem extends AbstractItem {}
+class DrinkItem extends AbstractItem {}
+class SideItem extends AbstractItem {}
+class AbstractItem implements Item {}
+/**
+ * @composed 1 - 1 Item
+ * @author Tarinaky
+ *
+ */
+class BOGOFDiscount extends AbstractDiscount {}
+class AbstractDiscount implements Discount {}
