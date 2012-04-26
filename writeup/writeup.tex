@@ -50,7 +50,7 @@
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
 
 %%% END Article customizations
-
+\usepackage{rotating}
 %%% The "real" document content comes below...
 
 \title{CS12420 Assignment 2, individual project}
@@ -85,6 +85,28 @@ As mentioned previously, because of the need to make Till logs independent of re
 
 An \emph{Inventory} populates itself from an XML file either in the JAR or a data directory. At present the JAR is the default location and it will only load from the filesystem in the event of failure. This could be changed to allow the inventory to be editable by a user. As this was not a part of the use-case the InventoryEditor in the pipeline package is only a helper script for the developer and is not robust enough for deployment.
 
+\begin{figure}[h!]
+\caption{Class diagram for the uk.ac.aber.dcs.cs12420.aberpizza.data package.}
 \includegraphics[scale=0.35]{classdiagram.png}
+\end{figure}
+
+\section{Testing}
+%\begin{sidewaystable}[h!]
+\begin{tabular}{p{3cm}|p{6cm}|p{3cm}}
+Specified by use case requirement... & Test description & Pass or description of failure \\
+\hline
+1. Start till for day & Does program launch & Pass \\
+2. Add items to the order & Can one add an item to the order & Pass \\
+3. Change quantity for an item in the order & Can one change the quantity of an item & Pass \\
+4. Cancel order & Does the 'New Order' button clear the order & Pass \\
+5. Pay for the order & Does the 'Send Order' button prompt for the amount of cash tendered and display change &  Pass \\
+6. Show Receipt & Is a receipt displayed when an order is placed successfully & Pass \\
+7. View sales history for the day & Does the Till Reviewer launch & Pass \\
+8. Close till for the day & Is the Till log serialised on exit & Pass \\
+\end{tabular}
+%\end{sidewaystable}
+
+\section{Self-evaluation}
+The entire project was very easy, just time consuming. There are no unit tests for testing discounts as that feature was added late in development when unit tests were not being used (in favour of testing the application as a whole).
 
 \end{document}

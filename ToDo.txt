@@ -1,6 +1,4 @@
 To do list:
- * Writeup, Tests
- * Writeup, self-evaluation
  * Feedback form
  * submit
  * ???
