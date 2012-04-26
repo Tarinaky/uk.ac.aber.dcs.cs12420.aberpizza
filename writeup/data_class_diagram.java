@@ -80,4 +80,16 @@ class Order{
 	public String getReceipt();
 	public BigDecimal getSubtotal();
 	public boolean isFinalised();
+	public static String niceDate(Date date);
+	public void setAppliedDiscounts(Collection<Discount> appliedDiscounts);
+	public void setCustomerName(String name);
+	public void setDate(Date date);
+	public void setFinalised(boolean finalised);
+	public void setOrderTable(Map<Item,OrderItem> orderTable);
+	public void updateItemQuantity(Item item, int quantity);
 }
+
+/** @opt hide */class Map<Item,OrderItem> {}
+class OrderItem {}
+/** @opt hide */class Collection<Discount>{}
+/** @opt hide */class Date {}
