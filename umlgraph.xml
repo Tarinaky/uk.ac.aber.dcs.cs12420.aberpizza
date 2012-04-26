@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="javadoc">
     <target name="javadoc">
-   	        <javadoc sourcepath="src" packagenames="uk.ac.aber.dcs.cs12420.aberpizza.*" destdir="uml" 
+   	        <javadoc sourcepath="src" packagenames="uk.ac.aber.dcs.cs12420.aberpizza.*" destdir="doc" 
    	                 private="true">
    	                <doclet name="org.umlgraph.doclet.UmlGraphDoc" path="c:\java_lib\UMLGraph-5.4.jar">
    	                        <param name="-inferrel"/>
