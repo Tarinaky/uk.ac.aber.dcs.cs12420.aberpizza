@@ -113,7 +113,7 @@ class DrinkItem extends AbstractItem {}
 class SideItem extends AbstractItem {}
 class AbstractItem implements Item {}
 /**
- * @composed 1 - 1 Item
+ * @has 1 - 1 Item
  * @author Tarinaky
  *
  */

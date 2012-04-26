@@ -1,5 +1,4 @@
 To do list:
- * Writeup, discussion of changes
  * Writeup, Tests
  * Writeup, self-evaluation
  * Feedback form
