@@ -119,3 +119,25 @@ class AbstractItem implements Item {}
  */
 class BOGOFDiscount extends AbstractDiscount {}
 class AbstractDiscount implements Discount {}
+/**
+ * @opt all
+ * @composed 1 - * Order
+ * @author Tarinaky
+ *
+ */
+class Till {
+	private LinkedList<Order> orders;
+	public void addOrder(Order order);
+	public LinkedList<Order> getOrders();
+	public BigDecimal getTotalForDay();
+	public static Till load();
+	public static Till load(File path);
+	public static String niceDate(Date date);
+	public void save();
+	public void setOrders(LinkedList<Order> orders);
+	
+}
+/** @opt hide */
+class LinkedList<Order> {}
+/** @opt hide */
+class File {}
